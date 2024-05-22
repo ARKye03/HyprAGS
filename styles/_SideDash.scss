@@ -1,0 +1,21 @@
+@import "Colors.scss";
+
+.side_dash box {
+  min-width: 400px;
+  padding: 10px;
+  border: 1px solid $main-border-color;
+}
+.side_dash_box {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.side_dash_sys_button {
+  padding: 5px;
+}
+.side_dash {
+  padding: 5px;
+  background-color: $one-dark-bg;
+  border: 1px solid $main-border-color;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

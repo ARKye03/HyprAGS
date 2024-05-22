@@ -6,6 +6,7 @@ import { MediaWidget } from "Widgets/Media/Media";
 import { notificationSideBar } from "Widgets/Notifications/NotificationCenter";
 import App from "resource:///com/github/Aylur/ags/app.js";
 import { notificationPopup } from "./Widgets/Notifications/NotificationPops";
+import { SideDash } from "Widgets/SideDashBoard/master";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -43,6 +44,7 @@ App.config({
     MediaWidget(),
     notificationSideBar,
     applauncher,
-    calendar,
+    // calendar,
+    SideDash(),
   ],
 });

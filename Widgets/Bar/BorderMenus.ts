@@ -11,8 +11,8 @@ export const PowerMenu = Widget.Box({
     }),
     Widget.Button({
       child: Widget.Label(" ⏻ "),
-      on_primary_click_release: () =>
-        execAsync(`/home/archkye/.config/rofi/powermenu/type-4/powermenu.sh`),
+      on_primary_click_release: () => App.ToggleWindow("SideDash"),
+      // execAsync(`/home/archkye/.config/rofi/powermenu/type-4/powermenu.sh`),
     }),
   ],
 });

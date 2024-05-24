@@ -1,3 +1,6 @@
+//Deprecated
+//Moved to SideDashBoard
+
 import { icons } from "assets/Assets";
 import Notification, {
   Notification as NotificationService,

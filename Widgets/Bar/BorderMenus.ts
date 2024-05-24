@@ -1,23 +1,21 @@
+import { icons } from "assets/Assets";
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
-import { CurrentNotifications } from "Widgets/Notifications/NotificationCenter";
 
-export const PowerMenu = Widget.Box({
-  className: "bc",
-  children: [
-    Widget.Button({
-      on_primary_click_release: () => App.ToggleWindow("notificationSideBar"),
-      child: CurrentNotifications,
-    }),
-    Widget.Button({
-      child: Widget.Label(" ⏻ "),
-      on_primary_click_release: () => App.ToggleWindow("SideDash"),
-      // execAsync(`/home/archkye/.config/rofi/powermenu/type-4/powermenu.sh`),
-    }),
-  ],
+export const PowerMenu = Widget.Button({
+  className: "top_sys_button_menu",
+  child: Widget.Icon({
+    icon: icons.PowerButton,
+    size: 20,
+    hpack: "center",
+  }),
+  on_primary_click_release: () => App.ToggleWindow("SideDash"),
 });
 export const AppLauncher = Widget.Button({
-  className: "bc",
-  child: Widget.Label(" 󱓞 "),
+  className: "top_sys_button_menu",
+  child: Widget.Icon({
+    icon: icons.AppLauncher,
+    size: 20,
+    hpack: "center",
+  }),
   on_clicked: () => App.ToggleWindow("applauncher"),
 });

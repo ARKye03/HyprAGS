@@ -39,12 +39,12 @@
   border: 1px solid #5c6e7b;
   border-radius: 10px;
   padding: 5px;
-}
-.side_dash_calendar:selected {
-  padding: unset;
-  background-color: #6b6f76;
-}
 
+  &:selected {
+    padding: unset;
+    background-color: #6b6f76;
+  }
+}
 .side_dash_mid_box {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;

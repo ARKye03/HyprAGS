@@ -50,3 +50,19 @@
   border-bottom-right-radius: 10px;
   padding: 10px;
 }
+.side_dash_notifications_scroll {
+  min-height: 655px;
+  background-color: #252a32;
+  transition: 300ms;
+}
+
+.side_dash_notifications_scroll.active {
+  min-height: 600px;
+  transition: 10ms;
+}
+.side_dash_notifications {
+  background-color: #252a32;
+  border: 1px solid #5c6e7b;
+  border-radius: 10px;
+  padding: 5px;
+}

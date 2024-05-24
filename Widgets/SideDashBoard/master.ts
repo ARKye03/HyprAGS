@@ -3,6 +3,11 @@ import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import GLib from "types/@girs/glib-2.0/glib-2.0";
 
 const network = await Service.import("network");
+const Notification = await Service.import("notifications");
+Notification.popupTimeout = 3000;
+Notification.forceTimeout = false;
+Notification.cacheActions = false;
+Notification.clearDelay = 50;
 
 const CurrentUser = GLib.getenv("USER");
 const HOME = GLib.getenv("HOME");
@@ -88,6 +93,11 @@ const UpperBox = Widget.CenterBox({
       hexpand: false,
     }),
     on_primary_click_release: () => {
+      NotificationCenter.class_name = NotificationCenter.class_name.includes(
+        "active"
+      )
+        ? "side_dash_notifications_scroll"
+        : "side_dash_notifications_scroll active";
       MidBox.reveal_child = !MidBox.reveal_child;
     },
   }),
@@ -145,6 +155,84 @@ let MidBox = Widget.Revealer({
     ],
   }),
 });
+
+function createNotificationBox(notification: {
+  urgency: any;
+  summary: any;
+  body: any;
+  dismiss: () => unknown;
+}) {
+  return Widget.Box({
+    vertical: true,
+    children: [
+      Widget.Label({
+        class_name: `notification-title-${notification.urgency}`,
+        justification: "center",
+        use_markup: true,
+        wrap: true,
+        label: notification.summary,
+      }),
+      Widget.Label({
+        class_name: "notification-body",
+        justification: "center",
+        use_markup: true,
+        wrap: true,
+        label: notification.body,
+        max_width_chars: 20,
+      }),
+      // Widget.Button({
+      //   hpack: "end",
+      //   hexpand: true,
+      //   on_primary_click_release: () => notification.dismiss(),
+      //   child: Widget.Icon({
+      //     icon: icons.closeChatSvg,
+      //     size: 20,
+      //   }),
+      // }),
+    ],
+  });
+}
+
+const NotificationCenter = Widget.Scrollable({
+  class_name: "side_dash_notifications_scroll",
+  child: Widget.Box({
+    vertical: true,
+    children: Notification.bind("notifications").as((notifications) =>
+      notifications.map(createNotificationBox)
+    ),
+  }),
+});
+
+const NotificationsCenter = Widget.Box({
+  class_name: "side_dash_notifications",
+  vertical: true,
+  children: [
+    Widget.CenterBox({
+      class_name: "side_dash_notifications_title",
+      start_widget: Widget.Box(),
+      center_widget: Widget.Label({
+        hpack: "center",
+        hexpand: true,
+        label: Notification.bind("notifications").as(
+          (n) => `There are ${n.length} notifications`
+        ),
+      }),
+      end_widget: Widget.Button({
+        hpack: "end",
+        on_primary_click_release: () => Notification.clear(),
+        child: Widget.Icon({
+          icon: icons.trashNotificationsSvg,
+          size: 20,
+        }),
+      }),
+    }),
+    NotificationCenter,
+  ],
+});
+
+const Calendar = Widget.Calendar({
+  class_name: "side_dash_calendar",
+});
 export const SideDash = () =>
   Widget.Window({
     anchor: ["top", "right", "bottom"],
@@ -172,14 +260,7 @@ export const SideDash = () =>
           class_name: "side_dash_box",
           expand: true,
           vertical: true,
-          children: [
-            UpperBox,
-            MidBox,
-            Widget.Calendar({
-              class_name: "side_dash_calendar",
-            }),
-            Widget.Label("Hello World!"),
-          ],
+          children: [UpperBox, MidBox, Calendar, NotificationsCenter],
         }),
       }),
     }),

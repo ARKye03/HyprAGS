@@ -3,6 +3,7 @@ import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import GLib from "types/@girs/glib-2.0/glib-2.0";
 
 const CurrentUser = GLib.getenv("USER");
+const HOME = GLib.getenv("HOME");
 
 //Yes or no widget
 const YesNoWidget = Widget.Box({
@@ -45,7 +46,7 @@ const UpperBox = Widget.CenterBox({
           hexpand: false,
         }),
         on_primary_click_release: () =>
-          execAsync(`~/.dotfiles/scripts/toggle_vpn.sh`),
+          execAsync(`${HOME}/.dotfiles/scripts/toggle_vpn.sh`),
       }),
       Widget.Button({
         class_name: "side_dash_sys_button",
@@ -162,7 +163,12 @@ export const SideDash = () =>
           class_name: "side_dash_box",
           expand: true,
           vertical: true,
-          children: [UpperBox, MidBox, Widget.Label("Hello World!")],
+          children: [
+            UpperBox,
+            Widget.Calendar(),
+            MidBox,
+            Widget.Label("Hello World!"),
+          ],
         }),
       }),
     }),

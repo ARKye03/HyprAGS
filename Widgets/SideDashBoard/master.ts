@@ -32,18 +32,34 @@ const YesNoWidget = Widget.Box({
 
 const UpperBox = Widget.CenterBox({
   class_name: "side_dash_title",
-  hexpand: true,
-  start_widget: Widget.Button({
-    class_name: "side_dash_sys_button",
-    hpack: "start",
-    child: Widget.Icon({
-      icon: icons.ToggleVPN,
-      size: 25,
-      hpack: "start",
-      hexpand: false,
-    }),
-    on_primary_click_release: () =>
-      execAsync(`~/.dotfiles/scripts/toggle_vpn.sh`),
+  start_widget: Widget.Box({
+    class_name: "side_dash_title_start",
+    children: [
+      Widget.Button({
+        class_name: "side_dash_sys_button",
+        hpack: "start",
+        child: Widget.Icon({
+          icon: icons.ToggleVPN,
+          size: 25,
+          hpack: "start",
+          hexpand: false,
+        }),
+        on_primary_click_release: () =>
+          execAsync(`~/.dotfiles/scripts/toggle_vpn.sh`),
+      }),
+      Widget.Button({
+        class_name: "side_dash_sys_button",
+        hpack: "start",
+        child: Widget.Icon({
+          icon: icons.ArchLogo,
+          size: 25,
+          hpack: "start",
+          hexpand: false,
+        }),
+        on_primary_click_release: () =>
+          execAsync("hyprctl dispatch togglespecialworkspace"),
+      }),
+    ],
   }),
   center_widget: Widget.Label({
     hpack: "fill",
@@ -72,6 +88,7 @@ let MidBox = Widget.Revealer({
   transition: "slide_down",
   child: Widget.Box({
     homogeneous: true,
+    class_name: "side_dash_mid_box",
     spacing: 20,
     children: [
       Widget.Button({

@@ -1,21 +1,42 @@
 @import "Colors.scss";
 
-.side_dash box {
+.side_dash {
+  padding: 8px;
+}
+
+.side_dash_box {
+  background-color: $one-dark-bg;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
   min-width: 400px;
   padding: 10px;
-  border: 1px solid $main-border-color;
 }
-.side_dash_box {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
+
 .side_dash_sys_button {
   padding: 5px;
 }
+
 .side_dash {
-  padding: 5px;
   background-color: $one-dark-bg;
   border: 1px solid $main-border-color;
-  border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 5px;
+}
+
+.side_dash_title {
+  background-color: #252a32;
+  border: 1px solid #5c6e7b;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.side_dash_title_start button {
+  margin: 0 4px;
+}
+
+.side_dash_mid_box {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
 }

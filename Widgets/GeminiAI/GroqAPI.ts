@@ -23,20 +23,13 @@ export async function fetchGroq(input: string) {
             content: input,
           },
         ],
-        model: "llama2-70b-4096",
+        model: "llama3-70b-8192",
       }),
     }
   );
 
   const data = await response.json();
-
   const textParts = data.choices.map((choice: any) => choice.message.content);
 
   return textParts;
 }
-/*
-curl -X POST "https://api.groq.com/openai/v1/chat/completions" \
-     -H "Authorization: Bearer $GROQ_API_KEY" \
-     -H "Content-Type: application/json" \
-     -d '{"messages": [{"role": "user", "content": "Explain the importance of low latency LLMs"}], "model": "mixtral-8x7b-32768"}'
-*/

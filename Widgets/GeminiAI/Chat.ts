@@ -1,6 +1,5 @@
 // @ts-ignore
 import Gtk from "gi://Gtk";
-import { fetchCode } from "./GeminiAPI";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
 
@@ -37,7 +36,7 @@ const CenterListBox = Widget.ListBox({
     );
   },
 });
-const geminiChatHeader = Widget.Box({
+const ChatHeader = Widget.Box({
   vexpand: true,
   class_name: "chatHeader",
   children: [
@@ -49,7 +48,7 @@ const geminiChatHeader = Widget.Box({
       hexpand: true,
     }),
     Widget.Label({
-      label: "Gemini here for you.",
+      label: "What can I help you with?",
       hpack: "center",
       hexpand: true,
     }),
@@ -127,7 +126,7 @@ const resultListBox = Widget.Box({
 const sideBarContent = Widget.CenterBox({
   vertical: true,
   vexpand: true,
-  startWidget: geminiChatHeader,
+  startWidget: ChatHeader,
   centerWidget: ScrollableListBox,
   endWidget: resultListBox,
 });
@@ -135,7 +134,7 @@ export const Chat = () =>
   Widget.Window({
     name: "Chat",
     keymode: "on-demand",
-    exclusivity: "normal",
+    exclusivity: "exclusive",
     visible: false,
     class_name: "chat",
     anchor: ["top", "left", "bottom"],

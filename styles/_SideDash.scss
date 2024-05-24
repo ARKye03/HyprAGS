@@ -1,9 +1,11 @@
 @import "Colors.scss";
 
 .side_dash {
-  padding: 8px;
+  background-color: $one-dark-bg;
+  border: 1px solid $main-border-color;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
-
 .side_dash_box {
   background-color: $one-dark-bg;
   border-bottom-left-radius: 10px;
@@ -13,14 +15,6 @@
 }
 
 .side_dash_sys_button {
-  padding: 5px;
-}
-
-.side_dash {
-  background-color: $one-dark-bg;
-  border: 1px solid $main-border-color;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
   padding: 5px;
 }
 
@@ -54,11 +48,10 @@
   min-height: 655px;
   background-color: #252a32;
   transition: 300ms;
-}
-
-.side_dash_notifications_scroll.active {
-  min-height: 600px;
-  transition: 100ms;
+  &.active {
+    min-height: 600px;
+    transition: 100ms;
+  }
 }
 .side_dash_notifications {
   background-color: #252a32;

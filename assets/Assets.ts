@@ -3,7 +3,8 @@ const getSvgPath = (filePath: string) => `${App.configDir}/assets/${filePath}`;
 export const icons = {
   PowerButton: getSvgPath("SideDashboard/powerButton.svg"),
   ArchLogo: getSvgPath("archLogo.svg"),
-  ToggleVPN: getSvgPath("SideDashboard/pvpn.svg"),
+  ToggleVPN_on: getSvgPath("SideDashboard/pvpn_on.svg"),
+  ToggleVPN_off: getSvgPath("SideDashboard/pvpn_off.svg"),
   SysLock: getSvgPath("SideDashboard/SysButtons/lock.svg"),
   SysLogout: getSvgPath("SideDashboard/SysButtons/logout.svg"),
   SysOff: getSvgPath("SideDashboard/SysButtons/off.svg"),

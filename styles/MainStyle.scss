@@ -13,33 +13,27 @@ label {
 .volume,
 .systray,
 .media,
-.bc {
+.top_sys_button_menu {
   border: 1px solid $main-border-color;
   background-color: $one-dark-bg;
   border-radius: $borders;
   padding: 0 5px;
-  margin: 5px 10px;
+  margin: 5px 8px;
 }
-
+.top_sys_button_menu {
+  padding: 0px 10px;
+}
+.top_sys_button_menu:hover {
+  background-color: #3b4049;
+  color: #fff;
+}
 .systray button,
 .workspaces button {
   background-color: transparent;
 }
 .systray button:hover,
-.workspaces button:hover,
-.bc button:hover,
-.bc:hover {
+.workspaces button:hover {
   background-color: rgba($color: #545c70, $alpha: 0.4);
-}
-
-.bc label {
-  padding-right: 3px;
-}
-
-.bc button {
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: transparent;
 }
 
 .workspaces button {

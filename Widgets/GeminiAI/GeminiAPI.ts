@@ -1,4 +1,4 @@
-//Not used anymore, changed to html
+//Not used anymore, but I'm keeping it for reference
 import GLib from "gi://GLib";
 
 export async function fetchCode(input: string) {

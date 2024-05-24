@@ -2,6 +2,8 @@ import { icons } from "assets/Assets";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import GLib from "types/@girs/glib-2.0/glib-2.0";
 
+const network = await Service.import("network");
+
 const CurrentUser = GLib.getenv("USER");
 const HOME = GLib.getenv("HOME");
 
@@ -40,7 +42,14 @@ const UpperBox = Widget.CenterBox({
         class_name: "side_dash_sys_button",
         hpack: "start",
         child: Widget.Icon({
-          icon: icons.ToggleVPN,
+          class_name: "side_dash_sys_button_toggleVPN",
+          icon: network.vpn
+            .bind("activated_connections")
+            .as((state) =>
+              state.some((connection) => connection.state === "connected")
+                ? icons.ToggleVPN_on
+                : icons.ToggleVPN_off
+            ),
           size: 25,
           hpack: "start",
           hexpand: false,
@@ -165,8 +174,10 @@ export const SideDash = () =>
           vertical: true,
           children: [
             UpperBox,
-            Widget.Calendar(),
             MidBox,
+            Widget.Calendar({
+              class_name: "side_dash_calendar",
+            }),
             Widget.Label("Hello World!"),
           ],
         }),

@@ -1,6 +1,6 @@
 import { applauncher } from "Widgets/AppLauncher";
 import { Bar } from "Widgets/Bar/Bar";
-import { Chat } from "Widgets/GeminiAI/Chat";
+import { Chat } from "Widgets/Chat/Chat";
 import { MediaWidget } from "Widgets/Media/Media";
 import App from "resource:///com/github/Aylur/ags/app.js";
 import { notificationPopup } from "./Widgets/Notifications/NotificationPops";

@@ -88,7 +88,7 @@ export const Chat = () =>
   Widget.Window({
     name: "Chat",
     anchor: ["top", "left", "bottom"],
-    exclusivity: "exclusive",
+    exclusivity: "normal",
     keymode: "on-demand",
     visible: false,
     class_name: "chat",

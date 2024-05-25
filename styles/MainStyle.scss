@@ -9,7 +9,7 @@ label {
   font-weight: 700;
 }
 .bar {
-  background-color: transparentize($color: $one-dark-bg, $amount: 0.1);
+  background-color: transparentize($color: $one-dark-bg, $amount: 0.2);
   border-radius: $borders;
 }
 .workspaces,

@@ -8,6 +8,10 @@
 label {
   font-weight: 700;
 }
+.bar {
+  background-color: transparentize($color: $one-dark-bg, $amount: 0.1);
+  border-radius: $borders;
+}
 .workspaces,
 .clock,
 .volume,

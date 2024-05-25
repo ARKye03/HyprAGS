@@ -1,15 +1,20 @@
 @import "Colors.scss";
 
+$bg-dark: #252a32;
+$border-color: #5c6e7b;
+$border-radius: 10px;
+
 .side_dash {
   background-color: $one-dark-bg;
   border: 1px solid $main-border-color;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
 }
+
 .side_dash_box {
   background-color: $one-dark-bg;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
   min-width: 400px;
   padding: 10px;
 }
@@ -19,19 +24,20 @@
 }
 
 .side_dash_title {
-  background-color: #252a32;
-  border: 1px solid #5c6e7b;
-  border-radius: 10px;
+  background-color: $bg-dark;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
   padding: 10px;
 }
 
 .side_dash_title_start button {
   margin: 0 4px;
 }
+
 .side_dash_calendar {
-  background-color: #252a32;
-  border: 1px solid #5c6e7b;
-  border-radius: 10px;
+  background-color: $bg-dark;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
   padding: 5px;
 
   &:selected {
@@ -39,23 +45,27 @@
     background-color: #6b6f76;
   }
 }
+
 .side_dash_mid_box {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
   padding: 10px;
 }
+
 .side_dash_notifications_scroll {
   min-height: 655px;
-  background-color: #252a32;
+  background-color: $bg-dark;
   transition: 300ms;
+
   &.active {
     min-height: 600px;
     transition: 100ms;
   }
 }
+
 .side_dash_notifications {
-  background-color: #252a32;
-  border: 1px solid #5c6e7b;
-  border-radius: 10px;
+  background-color: $bg-dark;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
   padding: 5px;
 }

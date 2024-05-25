@@ -1,6 +1,14 @@
 @import "Colors.scss";
+
 $mach-Surface1: #494d64;
 $text-input: #3a3d4b;
+$bg-dark: #252a32;
+$border-color: #5c6e7b;
+$border-radius: 10px;
+$input-bg: #1d1f23;
+$input-border: #3e4452;
+$result-bg: #282c34;
+$result-border: #21252b;
 
 .chat {
   background-color: $one-dark-bg;
@@ -8,37 +16,44 @@ $text-input: #3a3d4b;
   border: 1px solid $main-border-color;
   padding: 5px;
 }
+
 .chatBox {
   padding: 8px;
   min-width: 500px;
 }
+
 .chatHeader {
   padding: 10px;
-  border: 1px solid #5c6e7b;
-  border-radius: 10px;
-  background-color: #252a32;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $bg-dark;
 }
+
 .chatInput {
   min-height: 75px;
   padding: 10px;
-  border: 1px solid #5c6e7b;
-  border-radius: 10px;
-  background-color: #252a32;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $bg-dark;
 }
+
 .resultBox {
   padding: 5px;
-  background-color: #282c34;
-  border: 1px solid #21252b;
+  background-color: $result-bg;
+  border: 1px solid $result-border;
 }
+
 .listChatBox {
   background-color: transparent;
+
   &:hover {
     background-color: transparent;
   }
 }
+
 .inputBox text {
-  background-color: #1d1f23;
-  border: 1px solid #3e4452;
+  background-color: $input-bg;
+  border: 1px solid $input-border;
   border-radius: 5px;
   padding: 5px;
   min-width: 200px;

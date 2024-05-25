@@ -124,7 +124,7 @@ export const applauncher = Widget.Window({
         );
       },
       child: Applauncher({
-        width: 500,
+        width: 400,
         height: 500,
         spacing: 12,
       }),

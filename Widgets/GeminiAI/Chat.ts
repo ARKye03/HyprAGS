@@ -1,10 +1,10 @@
 // @ts-ignore
 import Gtk from "gi://Gtk";
+import GLib from "gi://GLib";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
 
 const TextEntryWidget = Widget.subclass(Gtk.TextView);
-
 const TextInputWidget = TextEntryWidget({
   // @ts-ignore
   wrap_mode: Gtk.WrapMode.WORD_CHAR,
@@ -19,124 +19,132 @@ const TextInputWidget = TextEntryWidget({
 const ScrollableTextInputWidget = Widget.Scrollable({
   vscroll: "automatic",
   hscroll: "never",
+  hexpand: true,
   class_name: "inputBox",
   child: TextInputWidget,
 });
-// Create a reference to the center ListBox
-const CenterListBox = Widget.ListBox({
-  hexpand: false,
-  class_name: "chatBox",
-  setup(self) {
-    self.add(
-      Widget.Label({
-        wrap: true,
-        use_markup: true,
-        label: "Hi there! How can I help you today?",
-      })
-    );
-  },
-});
-const ChatHeader = Widget.Box({
-  vexpand: true,
+
+const chatHeader = Widget.CenterBox({
   class_name: "chatHeader",
-  children: [
-    Widget.Icon({
-      icon: icons.Pacman,
-      class_name: "pacman",
-      size: 60,
-      hpack: "start",
-      hexpand: true,
+  start_widget: Widget.Label(),
+  center_widget: Widget.Label({
+    label: "Chat",
+  }),
+  end_widget: Widget.Button({
+    hexpand: false,
+    hpack: "end",
+    on_clicked: () => {
+      App.ToggleWindow("Chat");
+    },
+    child: Widget.Icon({
+      icon: icons.closeChatSvg,
+      size: 25,
+      hexpand: false,
     }),
-    Widget.Label({
-      label: "What can I help you with?",
-      hpack: "center",
-      hexpand: true,
-    }),
-    Widget.Button({
-      can_focus: false,
-      onClicked: () => App.toggleWindow("Chat"),
-      child: Widget.Icon({
-        icon: icons.closeChatSvg,
-        size: 50,
-        hexpand: true,
-      }),
-    }),
-  ],
+  }),
 });
-const ScrollableListBox = Widget.Scrollable({
-  class_name: "scrollChatBox",
-  hscroll: "never",
-  vscroll: "automatic",
-  child: CenterListBox,
-});
-const resultListBox = Widget.Box({
-  class_name: "input",
+const InputSection = Widget.Box({
+  class_name: "chatInput",
+  hexpand: true,
   spacing: 8,
-  vexpand: true,
-  homogeneous: false,
-  vertical: false,
   children: [
     ScrollableTextInputWidget,
     Widget.Button({
-      can_focus: false,
+      hpack: "end",
+      hexpand: false,
+      vexpand: false,
+      vpack: "center",
       class_name: "sendButton",
-      onClicked: async () => {
-        let startIter = TextInputWidget.get_buffer().get_start_iter();
-        let endIter = TextInputWidget.get_buffer().get_end_iter();
-        let textToSend = TextInputWidget.get_buffer().get_text(
-          startIter,
-          endIter,
-          true
-        );
-        print("Send: " + textToSend);
-        fetchGroq(textToSend)
-          .then((result) => {
-            console.log(result);
-            let resultText = Array.isArray(result) ? result.join(" ") : result;
-
-            // Create a new Box with a Label containing the text
-            let row = Widget.Box();
-            let label = Widget.Label({
-              label: resultText,
-              wrap: true,
-              use_markup: true,
-              selectable: true,
-            });
-            row.add(label);
-
-            // Add the Box to the top of the ListBox
-            CenterListBox.prepend(row);
-
-            // Show the Box
-            row.show_all();
-          })
-          .catch((error) => {
-            // handle the error here
-            console.log(error);
-          });
+      on_primary_click_release: () => {
+        CreateResultWebView();
       },
       child: Widget.Icon({
+        hexpand: false,
         icon: icons.sendSvg,
         size: 20,
       }),
     }),
   ],
 });
-
-const sideBarContent = Widget.CenterBox({
-  vertical: true,
+let ListResults = Widget.ListBox({
+  hexpand: true,
   vexpand: true,
-  startWidget: ChatHeader,
-  centerWidget: ScrollableListBox,
-  endWidget: resultListBox,
+  class_name: "listChatBox",
+});
+const chatView = Widget.Box({
+  class_name: "chatView",
+  vexpand: true,
+  vertical: true,
+  hpack: "fill",
+  children: [
+    Widget.Scrollable({
+      vscroll: "automatic",
+      hscroll: "never",
+      child: ListResults,
+    }),
+  ],
 });
 export const Chat = () =>
   Widget.Window({
     name: "Chat",
-    keymode: "on-demand",
+    anchor: ["top", "left", "bottom"],
     exclusivity: "exclusive",
+    keymode: "on-demand",
     visible: false,
     class_name: "chat",
-    anchor: ["top", "left", "bottom"],
-    child: sideBarContent,
+    child: Widget.Box({
+      css: "padding: 1px;",
+      child: Widget.Revealer({
+        revealChild: false,
+        transitionDuration: 150,
+        transition: "slide_right",
+        setup: (self) => {
+          self.hook(
+            App,
+            (self, windowName, visible) => {
+              if (windowName === "Chat") {
+                self.reveal_child = visible;
+              }
+            },
+            "window-toggled"
+          );
+        },
+        child: Widget.Box({
+          class_name: "chatBox",
+          expand: true,
+          vertical: true,
+          children: [chatHeader, chatView, InputSection],
+        }),
+      }),
+    }),
   });
+function CreateResultWebView() {
+  let startIter = TextInputWidget.get_buffer().get_start_iter();
+  let endIter = TextInputWidget.get_buffer().get_end_iter();
+  let textToSend = TextInputWidget.get_buffer().get_text(
+    startIter,
+    endIter,
+    true
+  );
+
+  print("Send: " + textToSend);
+  fetchGroq(textToSend).then((result) => {
+    console.log(result);
+    let resultText = Array.isArray(result) ? result.join(" ") : result;
+    let row = Widget.Box({
+      class_name: "resultBox",
+    });
+    let label = Widget.Label({
+      label: resultText,
+      wrap: true,
+      use_markup: true,
+      selectable: true,
+    });
+    row.add(label);
+    // Add the Box to the top of the ListBox
+    ListResults.prepend(row);
+
+    // Show the Box
+    row.show_all();
+  });
+}

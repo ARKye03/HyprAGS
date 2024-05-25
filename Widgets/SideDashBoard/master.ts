@@ -129,7 +129,7 @@ let MidBox = Widget.Revealer({
       }),
       Widget.Button({
         on_primary_click_release: () =>
-          execAsync('notify-send "This doesn\'t work xd"'),
+          execAsync('notify-send "Work In Progress"'),
         child: Widget.Icon({
           icon: icons.SysLogout,
           size: 25,

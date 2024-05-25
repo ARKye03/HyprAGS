@@ -12,27 +12,31 @@ export const Volume = () =>
     child: Widget.Box({
       setup: (self) => {
         const updateVolume = () => {
-          const volumeIcon = Widget.Icon().hook(Audio.speaker, (self) => {
-            const category = {
-              101: "overamplified",
-              67: "high",
-              34: "medium",
-              1: "low",
-              0: "muted",
-            };
+          const volumeIcon = Widget.Icon({ css: "color: #efefef" }).hook(
+            Audio.speaker,
+            (self) => {
+              const category = {
+                101: "overamplified",
+                67: "high",
+                34: "medium",
+                1: "low",
+                0: "muted",
+              };
 
-            const icon = Audio.speaker.is_muted
-              ? 0
-              : [101, 67, 34, 1, 0].find(
-                  (threshold) => threshold <= Audio.speaker.volume * 100
-                );
+              const icon = Audio.speaker.is_muted
+                ? 0
+                : [101, 67, 34, 1, 0].find(
+                    (threshold) => threshold <= Audio.speaker.volume * 100
+                  );
 
-            self.icon = `audio-volume-${
-              category[icon as keyof typeof category]
-            }-symbolic`;
-          });
+              self.icon = `audio-volume-${
+                category[icon as keyof typeof category]
+              }-symbolic`;
+            }
+          );
 
           const volumeLabel = Widget.Label({
+            css: "color: #efefef",
             label: `   ${Math.round(Audio.speaker.volume * 100)}`,
           });
 

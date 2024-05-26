@@ -20,5 +20,7 @@ export function Player(
 }
 
 export const MusicPlayerDaemon = Widget.Box({
-  children: mpris.bind("players").as((p) => p.map(Player)),
+  children: mpris
+    .bind("players")
+    .as((p) => p.filter((player) => player.name === "mpd").map(Player)),
 });

@@ -67,7 +67,7 @@ function Player(player) {
       };
 
       self.hook(player, update, "position");
-      self.poll(1000, update);
+      self.poll(1000, (self) => update(self, player.position));
     },
   });
 
@@ -165,8 +165,10 @@ export const MediaWidget = Widget.Window({
       child: Widget.Box({
         vertical: true,
         css: "min-height: 2px; min-width: 2px;",
-        visible: players.as((p) => p.length > 0),
-        children: players.as((p) => p.map(Player)),
+        visible: players.as((p) => p.some((player) => player.name === "mpd")),
+        children: players.as((p) =>
+          p.filter((player) => player.name === "mpd").map(Player)
+        ),
       }),
     }),
   }),

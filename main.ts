@@ -1,10 +1,10 @@
 import { applauncher } from "Widgets/AppLauncher";
 import { Bar } from "Widgets/Bar/Bar";
 import { Chat } from "Widgets/Chat/Chat";
-import { MediaWidget } from "Widgets/Media/Media";
 import App from "resource:///com/github/Aylur/ags/app.js";
 import { notificationPopup } from "./Widgets/Notifications/NotificationPops";
 import { SideDash } from "Widgets/SideDashBoard/master";
+import { MediaWidget } from "Widgets/Media/Mpris";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -30,6 +30,7 @@ Utils.monitorFile(
     App.applyCss(css);
   }
 );
+
 // make sure sassc is installed on your system
 Utils.exec(`sassc ${scss} ${css}`);
 
@@ -39,7 +40,7 @@ App.config({
     Bar(),
     notificationPopup,
     Chat(),
-    MediaWidget(),
+    MediaWidget,
     applauncher,
     SideDash(),
   ],

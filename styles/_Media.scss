@@ -1,28 +1,53 @@
 @import "Colors.scss";
-.media-window {
-  background-color: $main-border-color;
-  border-radius: $borders;
-}
-.media-window box {
-  margin: 1px;
-  background-color: $one-dark-bg;
-  border-radius: $borders;
-  padding: 8px;
+
+.player {
+  border: 1px solid $main-border-color;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 350px;
 }
 
-.media-info {
-  margin-right: 10px;
+.player .img {
+  min-width: 100px;
+  min-height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 13px;
+  margin-right: 1em;
 }
 
-.media-info label {
-  margin-bottom: 5px;
-  margin-top: 5px;
+.player .title {
+  font-size: 1.2em;
 }
 
-.position {
-  margin-top: 10px;
+.player .artist {
+  font-size: 1.1em;
+  color: #eee;
 }
 
-.position slider {
+.player scale.position {
+  padding: 0;
+  margin-bottom: 0.3em;
+}
+
+.player scale.position trough {
+  min-height: 8px;
+}
+
+.player scale.position highlight {
+  background-color: #00a2ff;
+}
+
+.player scale.position slider {
   all: unset;
+}
+
+.player button {
+  min-height: 1em;
+  min-width: 1em;
+  padding: 0.3em;
+}
+
+.player button.play-pause {
+  margin: 0 0.3em;
 }

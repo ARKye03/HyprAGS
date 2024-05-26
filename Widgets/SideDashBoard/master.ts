@@ -12,32 +12,6 @@ Notification.clearDelay = 50;
 const CurrentUser = GLib.getenv("USER");
 const HOME = GLib.getenv("HOME");
 
-//Yes or no widget
-const YesNoWidget = Widget.Box({
-  class_name: "yes_no_widget",
-  spacing: 10,
-  children: [
-    Widget.Label("Yes"),
-    Widget.Button({
-      on_primary_click_release: () => execAsync("notify-send 'Yes'"),
-      child: Widget.Icon({
-        icon: icons.Pacman,
-        size: 25,
-        hpack: "center",
-      }),
-    }),
-    Widget.Label("No"),
-    Widget.Button({
-      on_primary_click_release: () => execAsync("notify-send 'No'"),
-      child: Widget.Icon({
-        icon: icons.Pacman,
-        size: 25,
-        hpack: "center",
-      }),
-    }),
-  ],
-});
-
 const UpperBox = Widget.CenterBox({
   class_name: "side_dash_title",
   start_widget: Widget.Box({

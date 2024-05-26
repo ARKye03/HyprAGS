@@ -1,23 +1,24 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
+export const mpris = await Service.import("mpris");
 
-export const MusicPlayerDaemon = Widget.Button({
-  className: "media",
-  can_focus: false,
+/** @param {import('types/service/mpris').MprisPlayer} player */
+export function Player(
+  player
+): import("/home/archkye/.dotfiles/dot-config/ags/types/widgets/button").Button<
+  import("/home/archkye/.dotfiles/dot-config/ags/types/widgets/label").Label<unknown>,
+  unknown
+> {
+  return Widget.Button({
+    className: "media",
+    on_primary_click_release: () => App.ToggleWindow("mpris"),
+    on_secondary_click_release: () => player.playPause(),
+    child: Widget.Label().hook(player, (label) => {
+      const { track_title } = player;
+      label.label = `${track_title}`;
+    }),
+  });
+}
 
-  child: Widget.Label({
-    setup: (self) => {
-      const updateLabel = () => {
-        execAsync(["/usr/bin/mpc", "--format", "%title%", "current"])
-          .then((date) => {
-            self.label = date;
-            // Wait for player status change and then update the label again
-            execAsync(["mpc", "idle", "player"]).then(updateLabel);
-          })
-          .catch(console.error);
-      };
-      updateLabel();
-    },
-  }),
-  on_clicked: () => App.ToggleWindow("MediaWidget"),
+export const MusicPlayerDaemon = Widget.Box({
+  children: mpris.bind("players").as((p) => p.map(Player)),
 });

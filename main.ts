@@ -5,6 +5,7 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import { notificationPopup } from "./Widgets/Notifications/NotificationPops";
 import { SideDash } from "Widgets/SideDashBoard/master";
 import { MediaWidget } from "Widgets/Media/Mpris";
+import { ClipboardManager } from "Widgets/Clipboard/cliphist";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -43,5 +44,6 @@ App.config({
     MediaWidget,
     applauncher,
     SideDash(),
+    ClipboardManager(),
   ],
 });

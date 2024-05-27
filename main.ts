@@ -1,4 +1,4 @@
-import { applauncher } from "Widgets/AppLauncher";
+import { applauncher } from "Widgets/AppLauncher/AppLauncher";
 import { Bar } from "Widgets/Bar/Bar";
 import { Chat } from "Widgets/Chat/Chat";
 import App from "resource:///com/github/Aylur/ags/app.js";

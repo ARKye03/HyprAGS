@@ -2,7 +2,7 @@
 import GLib from "gi://GLib";
 
 export async function fetchCode(input: string) {
-  const API_KEY = GLib.getenv("API_KEY");
+  const API_KEY = GLib.getenv("GEMINI_API_KEY");
 
   if (!API_KEY) {
     throw new Error("API_KEY not found");

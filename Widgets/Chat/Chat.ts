@@ -1,6 +1,5 @@
 // @ts-ignore
 import Gtk from "gi://Gtk";
-import GLib from "gi://GLib";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
 

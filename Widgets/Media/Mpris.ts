@@ -1,3 +1,4 @@
+import { Label } from "resource:///com/github/Aylur/ags/widgets/label.js";
 const mpris = await Service.import("mpris");
 const players = mpris.bind("players");
 
@@ -8,7 +9,7 @@ const PREV_ICON = "media-skip-backward-symbolic";
 const NEXT_ICON = "media-skip-forward-symbolic";
 
 /** @param {number} length */
-function lengthStr(length): string {
+function lengthStr(length: number): string {
   const min = Math.floor(length / 60);
   const sec = Math.floor(length % 60);
   const sec0 = sec < 10 ? "0" : "";
@@ -16,7 +17,7 @@ function lengthStr(length): string {
 }
 
 /** @param {import('types/service/mpris').MprisPlayer} player */
-function Player(player) {
+function Player(player: import("types/service/mpris").MprisPlayer) {
   const img = Widget.Box({
     class_name: "img",
     vpack: "start",
@@ -61,7 +62,7 @@ function Player(player) {
     class_name: "position",
     hpack: "start",
     setup: (self) => {
-      const update = (_, time) => {
+      const update = (_: Label<unknown>, time: number) => {
         self.label = lengthStr(time || player.position);
         self.visible = player.length > 0;
       };

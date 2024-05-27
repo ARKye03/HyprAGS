@@ -2,12 +2,7 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 export const mpris = await Service.import("mpris");
 
 /** @param {import('types/service/mpris').MprisPlayer} player */
-export function Player(
-  player: import("types/service/mpris").MprisPlayer
-): import("/home/archkye/.dotfiles/dot-config/ags/types/widgets/button").Button<
-  import("/home/archkye/.dotfiles/dot-config/ags/types/widgets/label").Label<unknown>,
-  unknown
-> {
+export function Player(player: import("types/service/mpris").MprisPlayer) {
   return Widget.Button({
     className: "media",
     on_primary_click_release: () => App.ToggleWindow("mpris"),

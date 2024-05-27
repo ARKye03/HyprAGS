@@ -1,6 +1,6 @@
 import { icons } from "assets/Assets";
+import { Globals } from "Widgets/userVars";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
-import GLib from "types/@girs/glib-2.0/glib-2.0";
 
 const network = await Service.import("network");
 const Notification = await Service.import("notifications");
@@ -8,9 +8,6 @@ Notification.popupTimeout = 3000;
 Notification.forceTimeout = false;
 Notification.cacheActions = false;
 Notification.clearDelay = 50;
-
-const CurrentUser = GLib.getenv("USER");
-const HOME = GLib.getenv("HOME");
 
 const UpperBox = Widget.CenterBox({
   class_name: "side_dash_title",
@@ -34,7 +31,7 @@ const UpperBox = Widget.CenterBox({
           hexpand: false,
         }),
         on_primary_click_release: () =>
-          execAsync(`${HOME}/.dotfiles/scripts/toggle_vpn.sh`),
+          execAsync(`${Globals.HOME}/.dotfiles/scripts/toggle_vpn.sh`),
       }),
       Widget.Button({
         class_name: "side_dash_sys_button",
@@ -53,7 +50,7 @@ const UpperBox = Widget.CenterBox({
   center_widget: Widget.Label({
     hpack: "fill",
     hexpand: true,
-    label: `Hello ${CurrentUser}!`,
+    label: `Hello ${Globals.CurrentUser}!`,
   }),
   end_widget: Widget.Button({
     class_name: "side_dash_sys_button",
@@ -67,9 +64,7 @@ const UpperBox = Widget.CenterBox({
       hexpand: false,
     }),
     on_primary_click_release: () => {
-      NotificationCenter.class_name = NotificationCenter.class_name.includes(
-        "active"
-      )
+      Notifications.class_name = Notifications.class_name.includes("active")
         ? "side_dash_notifications_scroll"
         : "side_dash_notifications_scroll active";
       MidBox.reveal_child = !MidBox.reveal_child;
@@ -130,7 +125,7 @@ let MidBox = Widget.Revealer({
   }),
 });
 
-function createNotificationBox(notification: {
+function createNotificationWidget(notification: {
   urgency: any;
   summary: any;
   body: any;
@@ -167,17 +162,17 @@ function createNotificationBox(notification: {
   });
 }
 
-const NotificationCenter = Widget.Scrollable({
+const Notifications = Widget.Scrollable({
   class_name: "side_dash_notifications_scroll",
   child: Widget.Box({
     vertical: true,
     children: Notification.bind("notifications").as((notifications) =>
-      notifications.map(createNotificationBox)
+      notifications.map(createNotificationWidget)
     ),
   }),
 });
 
-const NotificationsCenter = Widget.Box({
+const NotificationsBox = Widget.Box({
   class_name: "side_dash_notifications",
   vertical: true,
   children: [
@@ -200,7 +195,7 @@ const NotificationsCenter = Widget.Box({
         }),
       }),
     }),
-    NotificationCenter,
+    Notifications,
   ],
 });
 
@@ -234,7 +229,7 @@ export const SideDash = () =>
           class_name: "side_dash_box",
           expand: true,
           vertical: true,
-          children: [UpperBox, MidBox, Calendar, NotificationsCenter],
+          children: [UpperBox, MidBox, Calendar, NotificationsBox],
         }),
       }),
     }),

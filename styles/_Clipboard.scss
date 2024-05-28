@@ -1,0 +1,15 @@
+@import "Colors";
+
+.cliphist {
+  background-color: $one-dark-bg;
+  border-radius: 5px;
+  border: 1px solid $main-border-color;
+  padding: 5px;
+}
+.cliphist_master_box {
+  padding: 10px;
+  min-width: 600px;
+}
+.clip_scroll_box {
+  min-height: 350px;
+}

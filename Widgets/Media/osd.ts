@@ -11,7 +11,7 @@ export function VolumeOSD() {
       0: "muted",
     };
 
-    function getIcon() {
+    const getIcon = () => {
       const icon = audio.speaker.is_muted
         ? 0
         : [101, 67, 34, 1, 0].find(
@@ -19,7 +19,7 @@ export function VolumeOSD() {
           );
 
       return `audio-volume-${icons[icon ?? 0]}-symbolic`;
-    }
+    };
 
     const icon = Widget.Icon({
       icon: Utils.watch(getIcon(), audio.speaker, getIcon),
@@ -35,28 +35,22 @@ export function VolumeOSD() {
         }),
     });
 
-    return Widget.Box({
-      class_name: "volume",
-      css: "min-width: 180px",
-      children: [icon, slider],
-    });
+    return Widget.Box(
+      {
+        class_name: "volume",
+        css: "min-width: 180px",
+      },
+      icon,
+      slider
+    );
   };
-  const window = Widget.Window(
-    {
-      name: "volume_osd",
-      anchor: ["bottom"],
-      css: "border-radius: 10px;",
-      visible: false, // initially hidden
-    },
-    Volume()
-  );
 
   // Watch for changes in the volume and show the window
   let hideTimeoutId: number | null = null;
 
   Utils.watch(
     () => audio.speaker.volume,
-    [audio.speaker], // Pass audio.speaker as an array
+    [audio.speaker],
     () => {
       window.visible = true;
       // Clear the previous timeout
@@ -68,6 +62,15 @@ export function VolumeOSD() {
         window.visible = false;
       });
     }
+  );
+  const window = Widget.Window(
+    {
+      name: "volume_osd",
+      anchor: ["bottom"],
+      css: "border-radius: 10px;",
+      visible: false,
+    },
+    Volume()
   );
 
   return window;

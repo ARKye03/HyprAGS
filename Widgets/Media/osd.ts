@@ -58,7 +58,7 @@ export function VolumeOSD() {
         GLib.source_remove(hideTimeoutId);
       }
       // Hide the window after 2 seconds
-      hideTimeoutId = Utils.timeout(2000, () => {
+      hideTimeoutId = Utils.timeout(1000, () => {
         window.visible = false;
       });
     }

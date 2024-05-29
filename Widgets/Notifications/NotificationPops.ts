@@ -1,6 +1,7 @@
 import { icons } from "assets/Assets";
 
 const notifications = await Service.import("notifications");
+notifications.popupTimeout = 5000;
 
 const popups = notifications.bind("popups");
 

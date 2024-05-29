@@ -4,9 +4,6 @@ import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const network = await Service.import("network");
 const Notification = await Service.import("notifications");
-Notification.popupTimeout = 3000;
-Notification.forceTimeout = false;
-Notification.cacheActions = false;
 Notification.clearDelay = 25;
 
 const UpperBox = Widget.CenterBox({

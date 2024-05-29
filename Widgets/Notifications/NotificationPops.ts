@@ -41,56 +41,65 @@ const Notification = (n: {
   const actions = Widget.Box({
     class_name: "actions",
     children: n.actions.map(({ id, label }) =>
-      Widget.Button({
-        class_name:
-          n.actions.length === 1 ? "lonely_action_button" : "action_button",
-        on_clicked: () => n.invoke(id),
-        hexpand: true,
-        child: Widget.Label(label),
-      })
+      Widget.Button(
+        {
+          class_name:
+            n.actions.length === 1 ? "lonely_action_button" : "action_button",
+          on_clicked: () => n.invoke(id),
+          hexpand: true,
+        },
+        Widget.Label(label)
+      )
     ),
   });
 
-  return Widget.EventBox({
-    on_primary_click: () => n.dismiss(),
-    child: Widget.Box({
-      class_name: `notification ${n.urgency}`,
-      children: [
-        Widget.Icon({
-          class_name: "notification_pop_icon",
-          size: 40,
-          icon:
-            n.urgency === "low"
-              ? icons.lowPop
-              : n.urgency === "normal"
-              ? icons.normalPop
-              : n.urgency === "critical"
-              ? icons.criticalPop
-              : icons.moodSad,
-        }),
-        Widget.Box({
+  return Widget.EventBox(
+    {
+      on_primary_click: () => n.dismiss(),
+    },
+    Widget.Box(
+      {
+        class_name: `notification ${n.urgency}`,
+      },
+      Widget.Icon({
+        class_name: "notification_pop_icon",
+        size: 40,
+        icon:
+          n.urgency === "low"
+            ? icons.lowPop
+            : n.urgency === "normal"
+            ? icons.normalPop
+            : n.urgency === "critical"
+            ? icons.criticalPop
+            : icons.moodSad,
+      }),
+      Widget.Box(
+        {
           vertical: true,
           class_name: "notification_pop_data",
-          children: [
-            Widget.Box({
-              vertical: true,
-              spacing: 10,
-              children: [title, body],
-            }),
-            actions,
-          ],
-        }),
-      ],
-    }),
-  });
+        },
+        Widget.Box(
+          {
+            vertical: true,
+            spacing: 10,
+          },
+          title,
+          body
+        ),
+        actions
+      )
+    )
+  );
 };
 
-export const notificationPopup = Widget.Window({
-  name: "notifications",
-  anchor: ["top", "left", "bottom"],
-  child: Widget.Box({
+export const notificationPopup = Widget.Window(
+  {
+    name: "notifications",
+    anchor: ["top", "left", "bottom"],
+  },
+  Widget.Box({
     class_name: "notifications",
     vertical: true,
     children: popups.as((popups) => popups.map(Notification)),
-  }),
-});
+  })
+);

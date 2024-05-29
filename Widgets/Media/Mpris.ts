@@ -121,12 +121,13 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   });
 
   return Widget.Box(
-    { class_name: "player" },
+    { class_name: "player", css: "padding: 15px" },
     img,
     Widget.Box(
       {
         vertical: true,
         hexpand: true,
+        spacing: 10,
       },
       Widget.Box([title, icon]),
       artist,

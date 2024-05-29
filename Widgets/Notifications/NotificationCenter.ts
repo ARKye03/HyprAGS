@@ -7,9 +7,6 @@ import Notification, {
 } from "resource:///com/github/Aylur/ags/service/notifications.js";
 
 const notifications = Notification;
-notifications.popupTimeout = 3000;
-notifications.forceTimeout = false;
-notifications.cacheActions = false;
 notifications.clearDelay = 50;
 
 const MAX_HEIGHT = 780;

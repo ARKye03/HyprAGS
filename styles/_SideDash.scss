@@ -53,12 +53,12 @@ $border-radius: 10px;
 }
 
 .side_dash_notifications_scroll {
-  min-height: 655px;
+  min-height: 630px;
   background-color: $bg-dark;
   transition: 300ms;
 
   &.active {
-    min-height: 600px;
+    min-height: 575px;
     transition: 100ms;
   }
 }

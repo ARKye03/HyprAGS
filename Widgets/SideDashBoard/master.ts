@@ -7,7 +7,7 @@ const Notification = await Service.import("notifications");
 Notification.popupTimeout = 3000;
 Notification.forceTimeout = false;
 Notification.cacheActions = false;
-Notification.clearDelay = 50;
+Notification.clearDelay = 25;
 
 const UpperBox = Widget.CenterBox({
   class_name: "side_dash_title",
@@ -132,6 +132,7 @@ function createNotificationWidget(notification: {
   dismiss: () => unknown;
 }) {
   return Widget.Box({
+    class_name: `notification_side_box-${notification.urgency}`,
     vertical: true,
     children: [
       Widget.Label({
@@ -166,6 +167,7 @@ const Notifications = Widget.Scrollable({
   class_name: "side_dash_notifications_scroll",
   child: Widget.Box({
     vertical: true,
+    spacing: 10,
     children: Notification.bind("notifications").as((notifications) =>
       notifications.map(createNotificationWidget)
     ),
@@ -175,6 +177,7 @@ const Notifications = Widget.Scrollable({
 const NotificationsBox = Widget.Box({
   class_name: "side_dash_notifications",
   vertical: true,
+  spacing: 10,
   children: [
     Widget.CenterBox({
       class_name: "side_dash_notifications_title",
@@ -229,6 +232,7 @@ export const SideDash = () =>
           class_name: "side_dash_box",
           expand: true,
           vertical: true,
+          spacing: 5,
           children: [UpperBox, MidBox, Calendar, NotificationsBox],
         }),
       }),

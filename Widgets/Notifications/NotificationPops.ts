@@ -1,3 +1,5 @@
+import { icons } from "assets/Assets";
+
 const notifications = await Service.import("notifications");
 
 const popups = notifications.bind("popups");
@@ -15,6 +17,7 @@ const Notification = (n: {
     class_name: "title",
     xalign: 0,
     justification: "left",
+    hpack: "center",
     hexpand: true,
     max_width_chars: 24,
     truncate: "end",
@@ -28,6 +31,8 @@ const Notification = (n: {
     hexpand: true,
     use_markup: true,
     xalign: 0,
+    lines: 2,
+    truncate: "end",
     justification: "left",
     label: n.body,
     wrap: true,
@@ -49,17 +54,31 @@ const Notification = (n: {
     on_primary_click: () => n.dismiss(),
     child: Widget.Box({
       class_name: `notification ${n.urgency}`,
-      vertical: true,
       children: [
+        Widget.Icon({
+          class_name: "notification_pop_icon",
+          size: 40,
+          icon:
+            n.urgency === "low"
+              ? icons.lowPop
+              : n.urgency === "normal"
+              ? icons.normalPop
+              : n.urgency === "critical"
+              ? icons.criticalPop
+              : icons.moodSad,
+        }),
         Widget.Box({
+          vertical: true,
+          class_name: "notification_pop_data",
           children: [
             Widget.Box({
               vertical: true,
+              spacing: 10,
               children: [title, body],
             }),
+            actions,
           ],
         }),
-        actions,
       ],
     }),
   });

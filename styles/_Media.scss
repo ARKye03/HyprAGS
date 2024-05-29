@@ -3,7 +3,7 @@
 .player {
   border: 1px solid $main-border-color;
   border-radius: 10px;
-  padding: 10px;
+  padding: $master_padding;
   min-width: 350px;
 }
 

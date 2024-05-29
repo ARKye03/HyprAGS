@@ -1,6 +1,5 @@
 @import "Colors.scss";
 
-$mach-Surface1: #494d64;
 $text-input: #3a3d4b;
 $bg-dark: #252a32;
 $border-color: #5c6e7b;
@@ -23,7 +22,7 @@ $result-border: #21252b;
 }
 
 .chatHeader {
-  padding: 10px;
+  padding: $master_padding;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   background-color: $bg-dark;
@@ -31,7 +30,7 @@ $result-border: #21252b;
 
 .chatInput {
   min-height: 75px;
-  padding: 10px;
+  padding: $master_padding;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   background-color: $bg-dark;

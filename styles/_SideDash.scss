@@ -1,22 +1,18 @@
 @import "Colors.scss";
 
-$bg-dark: #252a32;
-$border-color: #5c6e7b;
-$border-radius: 10px;
-
 .side_dash {
   background-color: $one-dark-bg;
   border: 1px solid $main-border-color;
-  border-bottom-left-radius: $border-radius;
-  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $master_border_radius;
+  border-top-left-radius: $master_border_radius;
 }
 
 .side_dash_box {
   background-color: $one-dark-bg;
-  border-bottom-left-radius: $border-radius;
-  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $master_border_radius;
+  border-top-left-radius: $master_border_radius;
   min-width: 400px;
-  padding: 10px;
+  padding: $master_padding;
 }
 
 .side_dash_sys_button {
@@ -24,10 +20,10 @@ $border-radius: 10px;
 }
 
 .side_dash_title {
-  background-color: $bg-dark;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  padding: 10px;
+  background-color: $side_dash_bg_dark;
+  border: 1px solid $side_dash_border_color;
+  border-radius: $master_border_radius;
+  padding: $master_padding;
 }
 
 .side_dash_title_start button {
@@ -35,9 +31,9 @@ $border-radius: 10px;
 }
 
 .side_dash_calendar {
-  background-color: $bg-dark;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
+  background-color: $side_dash_bg_dark;
+  border: 1px solid $side_dash_border_color;
+  border-radius: $master_border_radius;
   padding: 5px;
 
   &:selected {
@@ -47,14 +43,14 @@ $border-radius: 10px;
 }
 
 .side_dash_mid_box {
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
-  padding: 10px;
+  border-bottom-left-radius: $master_border_radius;
+  border-bottom-right-radius: $master_border_radius;
+  padding: $master_padding;
 }
 
 .side_dash_notifications_scroll {
   min-height: 630px;
-  background-color: $bg-dark;
+  background-color: $side_dash_bg_dark;
   transition: 300ms;
 
   &.active {
@@ -64,8 +60,8 @@ $border-radius: 10px;
 }
 
 .side_dash_notifications {
-  background-color: $bg-dark;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
+  background-color: $side_dash_bg_dark;
+  border: 1px solid $side_dash_border_color;
+  border-radius: $master_border_radius;
   padding: 5px;
 }

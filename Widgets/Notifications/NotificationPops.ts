@@ -42,7 +42,8 @@ const Notification = (n: {
     class_name: "actions",
     children: n.actions.map(({ id, label }) =>
       Widget.Button({
-        class_name: "action-button",
+        class_name:
+          n.actions.length === 1 ? "lonely_action_button" : "action_button",
         on_clicked: () => n.invoke(id),
         hexpand: true,
         child: Widget.Label(label),

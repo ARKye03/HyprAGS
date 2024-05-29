@@ -1,10 +1,6 @@
 @import "Colors.scss";
 
-progress,
-highlight {
-  background-color: aqua;
-  min-height: 8px;
-}
+$border_for_buttons: 6px;
 
 window#notifications {
   all: unset;
@@ -12,24 +8,6 @@ window#notifications {
 
 window#notifications box.notifications {
   padding: 0.5em;
-}
-
-.icon {
-  min-width: 68px;
-  min-height: 68px;
-  margin-right: 1em;
-}
-
-.icon image {
-  font-size: 58px;
-  margin: 5px;
-  color: #efefef;
-}
-
-.icon box {
-  min-width: 68px;
-  min-height: 68px;
-  border-radius: 7px;
 }
 
 .notification {
@@ -64,18 +42,31 @@ window#notifications box.notifications {
 .body {
   color: #fff;
 }
-
-.actions .action-button {
+.actions .lonely_action_button {
   margin: 0 0.4em;
   margin-top: 0.8em;
 }
-
-.actions .action-button:first-child {
-  margin-left: 0;
+.actions .action_button {
+  margin: 0 0.2em;
+  margin-top: 0.8em;
+  border-radius: unset;
+  border: 1px solid $main-border-color;
 }
 
-.actions .action-button:last-child {
+.actions .action_button:first-child {
+  margin-left: 0;
+  border-radius: unset;
+  border-top-left-radius: $border_for_buttons;
+  border-bottom-left-radius: $border_for_buttons;
+  border: 1px solid $main-border-color;
+}
+
+.actions .action_button:last-child {
   margin-right: 0;
+  border-radius: unset;
+  border-top-right-radius: $border_for_buttons;
+  border-bottom-right-radius: $border_for_buttons;
+  border: 1px solid $main-border-color;
 }
 
 .notification-sidebar {
@@ -88,7 +79,7 @@ window#notifications box.notifications {
 .scroll_notifications {
   min-height: 280px;
   min-width: 350px;
-  padding: 10px;
+  padding: $master_padding;
   border-top-left-radius: $borders;
   border-bottom-left-radius: $borders;
 }
@@ -130,5 +121,5 @@ window#notifications box.notifications {
 
 .notification_pop_data {
   border-left: 1px solid $main-border-color;
-  padding: 10px;
+  padding: $master_padding;
 }

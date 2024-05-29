@@ -212,7 +212,8 @@ export const SideDash = () =>
     class_name: "side_dash",
     visible: false,
     child: Widget.Box({
-      css: "padding: 1px;",
+      css: "padding: 1px",
+      class_name: "side_dash_master_box",
       child: Widget.Revealer({
         revealChild: false,
         transitionDuration: 150,

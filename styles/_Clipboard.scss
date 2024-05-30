@@ -1,10 +1,7 @@
 @import "Colors";
 
 .cliphist {
-  background-color: $master-dark-bg;
-  border-radius: 5px;
-  border: 1px solid $main-border-color;
-  padding: 5px;
+  @include MasterWidget;
 }
 .cliphist_master_box {
   padding: $master_padding;

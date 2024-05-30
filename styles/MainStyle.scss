@@ -19,9 +19,7 @@ label {
 .systray,
 .media,
 .top_sys_button_menu {
-  border: 1px solid $main-border-color;
-  background-color: $master-dark-bg;
-  border-radius: $borders;
+  @include MasterWidget;
   padding: 0 5px;
   margin: 5px 8px;
 }

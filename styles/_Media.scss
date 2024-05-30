@@ -1,9 +1,7 @@
 @import "Colors.scss";
 
 .player {
-  border: 1px solid $main-border-color;
-  border-radius: 10px;
-  padding: $master_padding;
+  @include MasterWidget;
   min-width: 350px;
 }
 

@@ -1,10 +1,7 @@
 @import "Colors.scss";
 
 .side_dash {
-  background-color: $master-dark-bg;
-  border: 1px solid $main-border-color;
-  border-bottom-left-radius: $master_border_radius;
-  border-top-left-radius: $master_border_radius;
+  @include MasterWidget;
 }
 
 .side_dash_box {

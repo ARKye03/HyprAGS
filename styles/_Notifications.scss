@@ -11,11 +11,9 @@ window#notifications box.notifications {
 }
 
 .notification {
+  @include MasterWidget;
   min-width: 350px;
-  border-radius: $borders;
   margin: 0.5em;
-  border: 1px solid $main-border-color;
-  background-color: $master-dark-bg;
 }
 .notification_side_box-low,
 .notification_side_box-normal,

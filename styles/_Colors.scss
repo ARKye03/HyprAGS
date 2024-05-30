@@ -1,3 +1,13 @@
+@mixin MasterWidget(
+  $bg_c: $master-dark-bg,
+  $bord: 1px solid $main-border-color,
+  $bord_rad: $master_border_radius
+) {
+  background-color: $bg_c;
+  border: $bord;
+  border-radius: $bord_rad;
+}
+
 $mocha-Rosewater: #f5e0dc;
 $mocha-Flamingo: #f2cdcd;
 $mocha-Pink: #f5c2e7;

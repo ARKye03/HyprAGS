@@ -1,6 +1,4 @@
 @import "Colors.scss";
 .applauncher {
-  border-radius: $borders;
-  border: 1px solid $main-border-color;
-  background-color: $master-dark-bg;
+  @include MasterWidget;
 }

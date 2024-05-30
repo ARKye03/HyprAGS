@@ -51,7 +51,7 @@ export function VolumeOSD() {
   Utils.watch(
     () => audio.speaker.volume,
     [audio.speaker],
-    () => {
+    (): any => {
       window.visible = true;
       // Clear the previous timeout
       if (hideTimeoutId !== null) {

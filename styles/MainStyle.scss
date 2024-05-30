@@ -10,7 +10,7 @@ label {
   font-weight: 700;
 }
 .bar {
-  background-color: transparentize($color: $one-dark-bg, $amount: 0.2);
+  background-color: transparentize($color: $master-dark-bg, $amount: 0.2);
   border-radius: $borders;
 }
 .workspaces,
@@ -20,7 +20,7 @@ label {
 .media,
 .top_sys_button_menu {
   border: 1px solid $main-border-color;
-  background-color: $one-dark-bg;
+  background-color: $master-dark-bg;
   border-radius: $borders;
   padding: 0 5px;
   margin: 5px 8px;

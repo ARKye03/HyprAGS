@@ -1,14 +1,14 @@
 @import "Colors.scss";
 
 .side_dash {
-  background-color: $one-dark-bg;
+  background-color: $master-dark-bg;
   border: 1px solid $main-border-color;
   border-bottom-left-radius: $master_border_radius;
   border-top-left-radius: $master_border_radius;
 }
 
 .side_dash_box {
-  background-color: $one-dark-bg;
+  background-color: $master-dark-bg;
   border-bottom-left-radius: $master_border_radius;
   border-top-left-radius: $master_border_radius;
   min-width: 400px;

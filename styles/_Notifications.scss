@@ -15,7 +15,7 @@ window#notifications box.notifications {
   border-radius: $borders;
   margin: 0.5em;
   border: 1px solid $main-border-color;
-  background-color: $one-dark-bg;
+  background-color: $master-dark-bg;
 }
 .notification_side_box-low,
 .notification_side_box-normal,
@@ -35,7 +35,7 @@ window#notifications box.notifications {
 }
 
 .title {
-  color: $mach-Text;
+  color: $mocha-Text;
   font-size: 1.4em;
 }
 
@@ -73,7 +73,7 @@ window#notifications box.notifications {
   border-top-left-radius: $borders;
   border-bottom-left-radius: $borders;
   border: 1px solid $main-border-color;
-  background-color: $one-dark-bg;
+  background-color: $master-dark-bg;
 }
 
 .scroll_notifications {

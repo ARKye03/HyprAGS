@@ -15,6 +15,7 @@ const AppItem = (app: {
     },
     attribute: { app },
     child: Widget.Box({
+      spacing: 10,
       children: [
         Widget.Icon({
           icon: app.icon_name || "",

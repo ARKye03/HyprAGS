@@ -34,14 +34,19 @@ $mocha-Base: #313244;
 $mocha-Mantle: #1e1e2e;
 $mocha-Crust: #181825;
 
+$one-dark-bg: #282c34;
+$one-dark-border-color: #3e4452;
+
+$latte-Mauve: #8839ef;
+
 $latte-Base: #eff1f5;
 
 $frappe-Base: #303446;
 $yet-another-color: #ff00ff;
 
 $borders: 10px;
-$master-dark-bg: #282c34;
-$main-border-color: #3e4452;
+$master-dark-bg: $one-dark-bg;
+$main-border-color: $one-dark-border-color;
 
 $side_dash_bg_dark: #252a32;
 $side_dash_border_color: #5c6e7b;

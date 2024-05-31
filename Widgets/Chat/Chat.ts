@@ -126,9 +126,9 @@ function CreateResultWebView() {
     true
   );
 
-  print("Send: " + textToSend);
+  // print("Send: " + textToSend);
   fetchGroq(textToSend).then((result) => {
-    console.log(result);
+    // console.log(result);
     let resultText = Array.isArray(result) ? result.join(" ") : result;
     let row = Widget.Box({
       class_name: "resultBox",

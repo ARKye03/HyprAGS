@@ -1,10 +1,10 @@
 @import "Colors.scss";
 
-$text-input: #3a3d4b;
-$bg-dark: #252a32;
-$border-color: #5c6e7b;
+$text-input: $macch-Text;
+$bg-dark: $macch-Mantle;
+$border-color: $macch-Surface1;
 $border-radius: 10px;
-$input-bg: #1d1f23;
+$input-bg: $macch-Crust;
 $input-border: #3e4452;
 $result-bg: #282c34;
 $result-border: #21252b;

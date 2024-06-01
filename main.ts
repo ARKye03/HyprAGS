@@ -30,7 +30,7 @@ Utils.monitorFile(
     Utils.exec(`sassc ${scss} ${css}`);
     App.resetCss();
     App.applyCss(css);
-  }
+  },
 );
 
 // make sure sassc is installed on your system

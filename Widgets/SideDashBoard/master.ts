@@ -1,11 +1,10 @@
-import { icons } from "assets/Assets";
 import { Globals } from "Widgets/userVars";
+import { icons } from "assets/Assets";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const network = await Service.import("network");
 const Notification = await Service.import("notifications");
 Notification.clearDelay = 25;
-
 const UpperBox = Widget.CenterBox({
   class_name: "side_dash_title",
   start_widget: Widget.Box({
@@ -21,7 +20,7 @@ const UpperBox = Widget.CenterBox({
             .as((state) =>
               state.some((connection) => connection.state === "connected")
                 ? icons.ToggleVPN_on
-                : icons.ToggleVPN_off
+                : icons.ToggleVPN_off,
             ),
           size: 25,
           hpack: "start",
@@ -166,7 +165,7 @@ const Notifications = Widget.Scrollable({
     vertical: true,
     spacing: 10,
     children: Notification.bind("notifications").as((notifications) =>
-      notifications.map(createNotificationWidget)
+      notifications.map(createNotificationWidget),
     ),
   }),
 });
@@ -183,7 +182,7 @@ const NotificationsBox = Widget.Box({
         hpack: "center",
         hexpand: true,
         label: Notification.bind("notifications").as(
-          (n) => `There are ${n.length} notifications`
+          (n) => `There are ${n.length} notifications`,
         ),
       }),
       end_widget: Widget.Button({
@@ -223,7 +222,7 @@ export const SideDash = () =>
                 self.reveal_child = visible;
               }
             },
-            "window-toggled"
+            "window-toggled",
           );
         },
         child: Widget.Box({

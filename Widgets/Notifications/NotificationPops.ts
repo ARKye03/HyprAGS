@@ -69,10 +69,10 @@ const Notification = (n: {
           n.urgency === "low"
             ? icons.lowPop
             : n.urgency === "normal"
-            ? icons.normalPop
-            : n.urgency === "critical"
-            ? icons.criticalPop
-            : icons.moodSad,
+              ? icons.normalPop
+              : n.urgency === "critical"
+                ? icons.criticalPop
+                : icons.moodSad,
       }),
       Widget.Box(
         {
@@ -96,7 +96,7 @@ const Notification = (n: {
 export const notificationPopup = Widget.Window(
   {
     name: "notifications",
-    anchor: ["top", "left", "bottom"],
+    anchor: ["top", "right", "bottom"],
   },
   Widget.Box({
     class_name: "notifications",

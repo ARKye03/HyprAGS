@@ -27,7 +27,7 @@ const UpperBox = Widget.CenterBox({
           hexpand: false,
         }),
         on_primary_click_release: () =>
-          execAsync(`${Globals.HOME}/.dotfiles/scripts/toggle_vpn.sh`),
+          execAsync(`${Globals.HOME}/.dotfiles/scripts/toggle_vpn.lua`),
       }),
       Widget.Button({
         class_name: "side_dash_sys_button",

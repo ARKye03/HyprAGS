@@ -1,4 +1,6 @@
 import { icons } from "assets/Assets";
+import { execAsync } from "resource:///com/github/Aylur/ags/utils/exec.js";
+import { Globals } from "Widgets/userVars";
 
 const notifications = await Service.import("notifications");
 notifications.popupTimeout = 5000;
@@ -54,6 +56,7 @@ const Notification = (n: {
     ),
   });
 
+  //execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification.wav`);
   return Widget.EventBox(
     {
       on_primary_click: () => n.dismiss(),

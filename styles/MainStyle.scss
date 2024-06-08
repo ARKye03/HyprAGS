@@ -11,7 +11,6 @@ label {
 }
 .bar {
   background-color: transparentize($color: $master-dark-bg, $amount: 0.2);
-  border-radius: $borders;
 }
 .workspaces,
 .clock,

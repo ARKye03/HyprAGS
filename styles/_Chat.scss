@@ -1,7 +1,10 @@
 @import "Colors.scss";
 
 $text-input: $macch-Text;
-$bg-dark: $macch-Mantle;
+$bg-dark: transparentize(
+  $color: $macch-Mantle,
+  $amount: 0.5,
+);
 $border-color: $macch-Surface1;
 $border-radius: 10px;
 $input-bg: $macch-Crust;
@@ -10,7 +13,7 @@ $result-bg: #282c34;
 $result-border: #21252b;
 
 .chat {
-  @include MasterWidget;
+  @include MasterWidget($bg-c: $master-dark-bg);
 }
 
 .chatBox {

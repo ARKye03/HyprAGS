@@ -1,7 +1,9 @@
 @import "Colors.scss";
 
-.player {
+window#mpris {
   @include MasterWidget;
+}
+.player {
   min-width: 350px;
 }
 

@@ -94,7 +94,7 @@ let MidBox = Widget.Revealer({
       }),
       Widget.Button({
         on_primary_click_release: () =>
-          execAsync('notify-send "Work In Progress"'),
+          execAsync('notify-send "Work In Progress"'), //"systemctl suspend" breaks hyprland, so this is not an option
         child: Widget.Icon({
           icon: icons.SysLogout,
           size: 25,

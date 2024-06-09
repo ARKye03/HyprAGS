@@ -56,10 +56,18 @@ const Notification = (n: {
     ),
   });
 
+  const notificationsActions = Widget.Revealer({
+    transition: "slide_down",
+    transition_duration: 300,
+    reveal_child: false,
+    child: actions,
+  });
   //execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification.wav`);
   return Widget.EventBox(
     {
       on_primary_click: () => n.dismiss(),
+      on_hover: () => notificationsActions.reveal_child = true,
+      on_hover_lost: () => notificationsActions.reveal_child = false,
     },
     Widget.Box(
       {
@@ -90,7 +98,7 @@ const Notification = (n: {
           title,
           body
         ),
-        actions
+        notificationsActions
       )
     )
   );

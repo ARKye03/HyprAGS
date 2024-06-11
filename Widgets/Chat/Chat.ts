@@ -103,6 +103,7 @@ export const Chat = () =>
             (self, windowName, visible) => {
               if (windowName === "Chat") {
                 self.reveal_child = visible;
+                TextInputWidget.grab_focus();
               }
             },
             "window-toggled"

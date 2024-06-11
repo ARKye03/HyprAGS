@@ -5,9 +5,9 @@ import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 export const Volume = () =>
   Widget.Button({
     className: "volume",
-    onScrollUp: () =>
+    on_scroll_up: () =>
       execAsync(`/usr/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+`),
-    onScrollDown: () =>
+    on_scroll_down: () =>
       execAsync(`/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-`),
     child: Widget.Box({
       setup: (self) => {
@@ -26,12 +26,11 @@ export const Volume = () =>
               const icon = Audio.speaker.is_muted
                 ? 0
                 : [101, 67, 34, 1, 0].find(
-                    (threshold) => threshold <= Audio.speaker.volume * 100
-                  );
+                  (threshold) => threshold <= Audio.speaker.volume * 100
+                );
 
-              self.icon = `audio-volume-${
-                category[icon as keyof typeof category]
-              }-symbolic`;
+              self.icon = `audio-volume-${category[icon as keyof typeof category]
+                }-symbolic`;
             }
           );
 

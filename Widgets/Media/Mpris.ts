@@ -31,6 +31,7 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   const title = Widget.Label({
     class_name: "title",
     wrap: true,
+    truncate: "end",
     hpack: "start",
     label: player.bind("track_title"),
   });
@@ -38,6 +39,7 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   const artist = Widget.Label({
     class_name: "artist",
     wrap: true,
+    truncate: "end",
     hpack: "start",
     label: player.bind("track_artists").transform((a) => a.join(", ")),
   });

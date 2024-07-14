@@ -1,16 +1,14 @@
 import Audio from "resource:///com/github/Aylur/ags/service/audio.js";
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 export const Volume = () =>
   Widget.Button({
     className: "volume",
     on_scroll_up: () =>
       Audio.speaker.volume = Math.min(1, Audio.speaker.volume + 0.05),
-    // execAsync(`/usr/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+`),
     on_scroll_down: () =>
       Audio.speaker.volume = Math.max(0, Audio.speaker.volume - 0.05),
-    // execAsync(`/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-`),
+    on_primary_click_release: () => Audio.speaker.is_muted = !Audio.speaker.is_muted,
     child: Widget.Box({
       setup: (self) => {
         const updateVolume = () => {

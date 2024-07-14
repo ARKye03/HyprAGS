@@ -6,9 +6,11 @@ export const Volume = () =>
   Widget.Button({
     className: "volume",
     on_scroll_up: () =>
-      execAsync(`/usr/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+`),
+      Audio.speaker.volume = Math.min(1, Audio.speaker.volume + 0.05),
+    // execAsync(`/usr/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+`),
     on_scroll_down: () =>
-      execAsync(`/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-`),
+      Audio.speaker.volume = Math.max(0, Audio.speaker.volume - 0.05),
+    // execAsync(`/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-`),
     child: Widget.Box({
       setup: (self) => {
         const updateVolume = () => {

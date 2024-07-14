@@ -5,6 +5,7 @@ import { AppLauncher, PowerMenu } from "./BorderMenus";
 import { Volume } from "../Media/Volume";
 import { SysTray } from "./SysTray";
 import { Clock } from "./Clock";
+import { NetworkIndicator } from "./Network";
 
 const Left = () =>
   Widget.Box({
@@ -17,7 +18,7 @@ const Center = () =>
 const Right = () =>
   Widget.Box({
     hpack: "end",
-    children: [Volume(), Clock(), SysTray(), PowerMenu],
+    children: [Volume(), NetworkIndicator(), Clock(), SysTray(), PowerMenu],
   });
 export const Bar = (monitor = 0) =>
   Widget.Window({

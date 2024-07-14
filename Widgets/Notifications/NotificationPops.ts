@@ -4,7 +4,7 @@ import { Globals } from "Widgets/userVars";
 
 const notifications = await Service.import("notifications");
 notifications.popupTimeout = 5000;
-notifications.connect("notified", () => execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification.wav`));
+notifications.connect("notified", () => execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification-long-pop.wav`));
 
 const popups = notifications.bind("popups");
 

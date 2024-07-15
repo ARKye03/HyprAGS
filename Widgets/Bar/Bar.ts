@@ -1,5 +1,5 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import { Workspaces } from "./Workspaces";
+import Workspaces from "./Workspaces";
 import { MusicPlayerDaemon } from "../Media/MusicPlayerDaemon";
 import { AppLauncher, PowerMenu } from "./BorderMenus";
 import { Volume } from "../Media/Volume";

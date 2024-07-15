@@ -2,47 +2,40 @@ import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
-export const Workspaces = () =>
-  Widget.Box({
-    className: "workspaces",
-    setup: (self) => {
-      const Wicons = [
-        "",
-        " ",
-        " ",
-        "󰨞 ",
-        " ",
-        " ",
-        "󰭹 ",
-        " ",
-        " ",
-        "󰊖 ",
-        " ",
-      ];
-      const arr = Array.from({ length: 10 }, (_, i) => i + 1);
+export default () => Widget.Box({
+  className: "workspaces",
+  setup: (self) => {
+    const Wicons = ["", " ", " ", "󰨞 ", " ", " ", "󰭹 ", " ", " ", "󰊖 ", " "];
+    const workspacesCount = 10;
+    let workspaceStates = Array.from({ length: workspacesCount }, (_, i) => ({
+      id: i + 1,
+      focused: false,
+      hasWindows: false,
+    }));
 
-      const updateWorkspaces = () => {
-        self.children = arr.map((i) => {
-          let className = ""; // default value
+    const updateWorkspaceStates = () => {
+      workspaceStates = workspaceStates.map(ws => ({
+        ...ws,
+        focused: Hyprland.active.workspace.id === ws.id,
+        hasWindows: Hyprland.workspaces.some(workspace => workspace.id === ws.id && workspace.windows > 0),
+      }));
+    };
 
-          if (Hyprland.active.workspace.id === i) {
-            className = "focused";
-          } else if (
-            Hyprland.workspaces.some((ws) => ws.id === i && ws.windows > 0)
-          ) {
-            className = "work";
-          }
+    const createWorkspaceButton = (ws: { focused: any; hasWindows: any; id: string | number; }) => {
+      const className = ws.focused ? "focused" : ws.hasWindows ? "work" : "";
+      return Widget.Button({
+        onClicked: () => execAsync(`/usr/bin/hyprctl dispatch workspace ${ws.id}`),
+        child: Widget.Label(`${Wicons[ws.id]}`),
+        className,
+      });
+    };
 
-          return Widget.Button({
-            onClicked: () =>
-              execAsync(`/usr/bin/hyprctl dispatch workspace ${i}`),
-            child: Widget.Label(`${Wicons[i]}`),
-            className: className,
-          });
-        });
-      };
+    const updateWorkspaces = () => {
+      updateWorkspaceStates();
+      self.children = workspaceStates.map(createWorkspaceButton);
+    };
 
-      self.hook(Hyprland.active.workspace, updateWorkspaces, "changed");
-      updateWorkspaces();
-    },
-  });
+    self.hook(Hyprland.active.workspace, updateWorkspaces, "changed");
+    updateWorkspaces();
+  },
+});

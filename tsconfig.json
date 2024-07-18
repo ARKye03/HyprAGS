@@ -12,6 +12,7 @@
     "baseUrl": ".",
     "typeRoots": [
       "./types",
+      "./@types",
       "./types/@girs"
     ],
     "skipLibCheck": true

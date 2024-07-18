@@ -17,7 +17,7 @@ const Wicons = {
 };
 
 
-function applyCssToWs(box: { children: any[]; }) {
+function ModCss(box: { children: any[]; }) {
     if (mainOutput == null) return;
     const focused = mainOutput.focused_tags;
     const occupied = mainOutput.occupied_tags;
@@ -52,6 +52,6 @@ export default () => {
             class_name: "ws-container",
             children: Array.from({ length: 9 }, (_, i) => i + 1).map(i => WorkspaceButton(i)),
         })
-            .hook(river, applyCssToWs, "changed")
+            .hook(river, ModCss, "changed")
     });
 };

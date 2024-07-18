@@ -18,7 +18,8 @@ label {
 .volume,
 .systray,
 .media,
-.top_sys_button_menu {
+.top_sys_button_menu,
+.ws-container {
   @include MasterWidget;
   padding: 0 5px;
   margin: 5px 8px;
@@ -73,14 +74,15 @@ label {
   background-color: $macch-Surface2;
 }
 .ws-button-label {
-  padding: 0px 10px;
+  padding: 0px 8px 0px 12px;
 }
 .ws-button {
   border-radius: 5px;
 }
 .wsb-occupied {
-  background-color: $macch-Blue;
+  color: $macch-Blue;
 }
 .wsb-active {
-  background-color: $latte-Mauve;
+  color: $latte-Mauve;
+  border-bottom: 3px solid $latte-Mauve;
 }

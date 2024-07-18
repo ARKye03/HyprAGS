@@ -4,6 +4,19 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 const river = AstalRiver.River.get_default();
 const mainOutput = AstalRiver.River.get_default().get_output("HDMI-A-1");
 
+const Wicons = {
+    1: " ",
+    2: " ",
+    3: "󰨞 ",
+    4: " ",
+    5: " ",
+    6: "󰭹 ",
+    7: " ",
+    8: " ",
+    9: "󰊖 ",
+};
+
+
 function applyCssToWs(box: { children: any[]; }) {
     if (mainOutput == null) return;
     const focused = mainOutput.focused_tags;
@@ -27,7 +40,7 @@ const WorkspaceButton = (i: number) => Widget.EventBox({
         river.run_command_async(["set-view-tags", `${1 << (i - 1)}`], null);
     },
     child: Widget.Label({
-        label: `${i}`,
+        label: `${Wicons[i]}`,
         class_name: "ws-button-label"
     })
 });

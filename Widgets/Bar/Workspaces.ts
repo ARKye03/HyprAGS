@@ -4,11 +4,11 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 const river = AstalRiver.River.get_default();
 const mainOutput = AstalRiver.River.get_default().get_output("HDMI-A-1");
 
-function applyCssToWs(box) {
+function applyCssToWs(box: { children: any[]; }) {
   if (mainOutput == null) return;
   const focused = mainOutput.focused_tags;
   const occupied = mainOutput.occupied_tags;
-  box.children.forEach((button, i) => {
+  box.children.forEach((button: { toggleClassName: (arg0: string, arg1: number) => void; }, i: any) => {
     button.toggleClassName("wsb-occupied", occupied & (1 << (i)));
     button.toggleClassName("wsb-active", focused & (1 << (i)));
   });

@@ -67,7 +67,6 @@ label {
 
 .ws-container {
   @include MasterWidget;
-  padding: 3px;
 }
 .ws-button:hover {
   transition: background-color ease-in-out 100ms;

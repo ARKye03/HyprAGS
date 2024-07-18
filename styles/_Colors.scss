@@ -72,10 +72,7 @@ $frappe-Base: #303446;
 $yet-another-color: #ff00ff;
 
 $borders: 10px;
-$master-dark-bg: transparentize(
-  $color: $macch-Base,
-  $amount: 0.4,
-);
+$master-dark-bg: $macch-Base;
 $main-border-color: $macch-Surface0;
 
 $side_dash_bg_dark: transparentize(

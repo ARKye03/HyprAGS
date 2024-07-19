@@ -45,12 +45,12 @@ label {
 }
 
 .workspaces button.work {
-  color: #00a2ff;
+  color: $macch-Blue;
 }
 
 .workspaces button.focused {
-  background-color: rgba($color: #6200ff, $alpha: 0.3);
-  color: #6a00ff;
+  color: $latte-Mauve;
+  border-bottom: 3px solid $latte-Mauve;
 }
 .workspaces button,
 .workspaces button.work,

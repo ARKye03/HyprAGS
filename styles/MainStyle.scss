@@ -23,13 +23,13 @@ label {
   @include MasterWidget;
   padding: 0 5px;
   margin: 5px 8px;
+  color: $macch-Text;
 }
 .top_sys_button_menu {
   padding: 0px 10px;
 }
 .top_sys_button_menu:hover {
   background-color: #3b4049;
-  color: #fff;
 }
 .systray button,
 .workspaces button {
@@ -38,10 +38,6 @@ label {
 .systray button:hover,
 .workspaces button:hover {
   background-color: rgba($color: #545c70, $alpha: 0.4);
-}
-
-.workspaces button {
-  color: #eee;
 }
 
 .workspaces button.work {

@@ -5,6 +5,7 @@ export const icons = {
   ArchLogo: getSvgPath("archLogo.svg"),
   Clipboard: getSvgPath("clipboard.svg"),
   AppLauncher: getSvgPath("applauncher.svg"),
+  WorkLogo: getSvgPath("work.svg"),
   moodSad: getSvgPath("moodSad.svg"),
   lowPop: getSvgPath("NotisPops/lowPop.svg"),
   normalPop: getSvgPath("NotisPops/normalPop.svg"),

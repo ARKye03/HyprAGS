@@ -20,7 +20,7 @@ const UpperBox = Widget.CenterBox({
             .as((state) =>
               state.some((connection) => connection.state === "connected")
                 ? icons.ToggleVPN_on
-                : icons.ToggleVPN_off,
+                : icons.ToggleVPN_off
             ),
           size: 25,
           hpack: "start",
@@ -33,8 +33,8 @@ const UpperBox = Widget.CenterBox({
         class_name: "side_dash_sys_button",
         hpack: "start",
         child: Widget.Icon({
-          icon: icons.ArchLogo,
-          size: 25,
+          icon: icons.WorkLogo,
+          size: 20,
           hpack: "start",
           hexpand: false,
         }),
@@ -165,7 +165,7 @@ const Notifications = Widget.Scrollable({
     vertical: true,
     spacing: 10,
     children: Notification.bind("notifications").as((notifications) =>
-      notifications.map(createNotificationWidget),
+      notifications.map(createNotificationWidget)
     ),
   }),
 });
@@ -182,7 +182,7 @@ const NotificationsBox = Widget.Box({
         hpack: "center",
         hexpand: true,
         label: Notification.bind("notifications").as(
-          (n) => `There are ${n.length} notifications`,
+          (n) => `There are ${n.length} notifications`
         ),
       }),
       end_widget: Widget.Button({
@@ -222,7 +222,7 @@ export const SideDash = () =>
                 self.reveal_child = visible;
               }
             },
-            "window-toggled",
+            "window-toggled"
           );
         },
         child: Widget.Box({

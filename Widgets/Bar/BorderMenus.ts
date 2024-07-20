@@ -4,8 +4,8 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 export const PowerMenu = Widget.Button({
   className: "top_sys_button_menu",
   child: Widget.Icon({
-    icon: icons.PowerButton,
-    size: 20,
+    icon: icons.ArchLogo,
+    size: 23,
     hpack: "center",
   }),
   on_primary_click_release: () => App.ToggleWindow("SideDash"),

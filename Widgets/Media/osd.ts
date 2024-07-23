@@ -37,37 +37,29 @@ export function VolumeOSD() {
 
     return Widget.Box(
       {
-        class_name: "volume",
-        css: "min-width: 180px",
+        class_name: "volume_osd_box",
       },
       icon,
       slider
-    );
+    ).hook(audio, TriggerOSD, "speaker-changed");
   };
 
-  // Watch for changes in the volume and show the window
   let hideTimeoutId: number | null = null;
-
-  Utils.watch(
-    () => audio.speaker.volume,
-    [audio.speaker],
-    (): any => {
-      window.visible = true;
-      // Clear the previous timeout
-      if (hideTimeoutId !== null) {
-        GLib.source_remove(hideTimeoutId);
-      }
-      // Hide the window after 2 seconds
-      hideTimeoutId = Utils.timeout(1000, () => {
-        window.visible = false;
-      });
+  function TriggerOSD() {
+    window.visible = true;
+    if (hideTimeoutId !== null) {
+      GLib.source_remove(hideTimeoutId);
     }
-  );
+    hideTimeoutId = Utils.timeout(1000, () => {
+      window.visible = false;
+    });
+  }
+
   const window = Widget.Window(
     {
       name: "volume_osd",
       anchor: ["bottom"],
-      css: "border-radius: 10px;",
+      css: "padding: 1px;",
       visible: false,
     },
     Volume()

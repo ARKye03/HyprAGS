@@ -5,8 +5,7 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import { notificationPopup } from "./Widgets/Notifications/NotificationPops";
 import { SideDash } from "Widgets/SideDashBoard/master";
 import { MediaWidget } from "Widgets/Media/Mpris";
-// import { VolumeOSD } from "Widgets/Media/osd";
-// import { ClipboardManager } from "Widgets/Clipboard/cliphist";
+import { VolumeOSD } from "Widgets/Media/osd";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -30,7 +29,7 @@ Utils.monitorFile(
     Utils.exec(`sassc ${scss} ${css}`);
     App.resetCss();
     App.applyCss(css);
-  },
+  }
 );
 
 // make sure sassc is installed on your system
@@ -45,7 +44,7 @@ App.config({
     MediaWidget,
     applauncher,
     SideDash(),
-    // VolumeOSD(),
+    VolumeOSD(),
     // await ClipboardManager(),
   ],
 });

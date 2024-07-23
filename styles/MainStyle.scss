@@ -1,16 +1,19 @@
 @import "Colors";
-@import "Chat.scss";
-@import "Notifications.scss";
-@import "Media.scss";
-@import "AppLauncher.scss";
-@import "SideDash.scss";
-@import "Clipboard.scss";
+@import "Chat";
+@import "Notifications";
+@import "Media";
+@import "OSD";
+@import "AppLauncher";
+@import "SideDash";
+@import "Clipboard";
 
 label {
   font-weight: 700;
 }
 .bar {
   @include MasterWidget;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 .wifi_indicator,
 .workspaces,

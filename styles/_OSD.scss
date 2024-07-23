@@ -1,0 +1,21 @@
+@import "Colors";
+
+window#volume_osd {
+  @include MasterWidget;
+}
+
+.volume_osd_box {
+  @include MasterWidget;
+  min-width: 180px;
+  padding: 5px 10px;
+
+  & scale trough {
+    min-height: 8px;
+  }
+  & scale highlight {
+    background-color: $macch-Blue;
+  }
+  & scale slider {
+    all: unset;
+  }
+}

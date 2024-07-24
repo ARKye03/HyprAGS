@@ -96,7 +96,6 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   });
 };
 
-// there needs to be only one instance
 export default Widget.Window({
   name: WINDOW_NAME,
   anchor: ["top", "left"],

@@ -32,6 +32,7 @@ const UpperBox = Widget.CenterBox({
       Widget.Button({
         class_name: "side_dash_sys_button",
         hpack: "start",
+        visible: Globals.DESKTOP_SESSION === "hyprland" ? true : false,
         child: Widget.Icon({
           icon: icons.WorkLogo,
           size: 20,

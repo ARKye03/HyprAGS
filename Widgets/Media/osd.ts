@@ -41,7 +41,7 @@ export function VolumeOSD() {
       },
       icon,
       slider
-    ).hook(audio, TriggerOSD, "speaker-changed");
+    ).hook(audio.speaker, TriggerOSD, "notify::volume");
   };
 
   let hideTimeoutId: number | null = null;

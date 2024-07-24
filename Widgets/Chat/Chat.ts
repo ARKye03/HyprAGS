@@ -83,7 +83,7 @@ const chatView = Widget.Box({
     }),
   ],
 });
-export const Chat = () =>
+export default () =>
   Widget.Window({
     name: "Chat",
     anchor: ["top", "left", "bottom"],

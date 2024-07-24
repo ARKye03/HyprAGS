@@ -20,7 +20,7 @@ const Right = () =>
     hpack: "end",
     children: [Volume(), NetworkIndicator(), Clock(), SysTray(), PowerMenu],
   });
-export const Bar = (monitor = 0) =>
+export default (monitor = 0) =>
   Widget.Window({
     name: `bar-${monitor}`,
     class_name: "bar",

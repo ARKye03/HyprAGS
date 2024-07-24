@@ -1,7 +1,10 @@
 import GLib from "types/@girs/glib-2.0/glib-2.0";
 const audio = await Service.import("audio");
 
-export function VolumeOSD() {
+const TIMEOUT_DESPAWN = 1000;
+const WINDOW_NAME = "volume_osd";
+
+export default function VolumeOSD() {
   const Volume = () => {
     const icons = {
       101: "overamplified",
@@ -50,14 +53,14 @@ export function VolumeOSD() {
     if (hideTimeoutId !== null) {
       GLib.source_remove(hideTimeoutId);
     }
-    hideTimeoutId = Utils.timeout(1000, () => {
+    hideTimeoutId = Utils.timeout(TIMEOUT_DESPAWN, () => {
       window.visible = false;
     });
   }
 
   const window = Widget.Window(
     {
-      name: "volume_osd",
+      name: WINDOW_NAME,
       anchor: ["bottom"],
       css: "padding: 1px;",
       visible: false,

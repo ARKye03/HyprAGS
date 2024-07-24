@@ -144,7 +144,7 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   );
 }
 
-export const MediaWidget = Widget.Window({
+export default Widget.Window({
   name: "mpris",
   css: "border-radius: 10px;",
   visible: false,

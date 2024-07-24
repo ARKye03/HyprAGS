@@ -1,11 +1,11 @@
-import { applauncher } from "Widgets/AppLauncher/AppLauncher";
-import { Bar } from "Widgets/Bar/Bar";
-import { Chat } from "Widgets/Chat/Chat";
+import applauncher from "Widgets/AppLauncher/AppLauncher";
+import Bar from "Widgets/Bar/Bar";
+import Chat from "Widgets/Chat/Chat";
 import App from "resource:///com/github/Aylur/ags/app.js";
-import { notificationPopup } from "./Widgets/Notifications/NotificationPops";
-import { SideDash } from "Widgets/SideDashBoard/master";
-import { MediaWidget } from "Widgets/Media/Mpris";
-import { VolumeOSD } from "Widgets/Media/osd";
+import notificationPopup from "./Widgets/Notifications/NotificationPops";
+import SideDash from "Widgets/SideDashBoard/master";
+import MediaWidget from "Widgets/Media/Mpris";
+import VolumeOSD from "Widgets/Media/osd";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;

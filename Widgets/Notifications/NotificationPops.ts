@@ -4,7 +4,9 @@ import { Globals } from "Widgets/userVars";
 
 const notifications = await Service.import("notifications");
 notifications.popupTimeout = 5000;
-notifications.connect("notified", () => execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification-long-pop.wav`));
+notifications.connect("notified", () =>
+  execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification-long-pop.wav`)
+);
 
 const popups = notifications.bind("popups");
 
@@ -67,8 +69,8 @@ const Notification = (n: {
   return Widget.EventBox(
     {
       on_primary_click: () => n.dismiss(),
-      on_hover: () => notificationsActions.reveal_child = true,
-      on_hover_lost: () => notificationsActions.reveal_child = false,
+      on_hover: () => (notificationsActions.reveal_child = true),
+      on_hover_lost: () => (notificationsActions.reveal_child = false),
     },
     Widget.Box(
       {
@@ -81,10 +83,10 @@ const Notification = (n: {
           n.urgency === "low"
             ? icons.lowPop
             : n.urgency === "normal"
-              ? icons.normalPop
-              : n.urgency === "critical"
-                ? icons.criticalPop
-                : icons.moodSad,
+            ? icons.normalPop
+            : n.urgency === "critical"
+            ? icons.criticalPop
+            : icons.moodSad,
       }),
       Widget.Box(
         {
@@ -105,7 +107,7 @@ const Notification = (n: {
   );
 };
 
-export const notificationPopup = Widget.Window(
+export default Widget.Window(
   {
     name: "notifications",
     anchor: ["top", "right", "bottom"],

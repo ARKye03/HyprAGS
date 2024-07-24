@@ -201,7 +201,7 @@ const NotificationsBox = Widget.Box({
 const Calendar = Widget.Calendar({
   class_name: "side_dash_calendar",
 });
-export const SideDash = () =>
+export default () =>
   Widget.Window({
     anchor: ["top", "right", "bottom"],
     name: "SideDash",

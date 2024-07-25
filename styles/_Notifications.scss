@@ -33,7 +33,7 @@ window#notifications box.notifications {
 }
 
 .title {
-  color: $mocha-Text;
+  color: $macch-Text;
   font-size: 1.4em;
 }
 
@@ -90,7 +90,7 @@ window#notifications box.notifications {
 .notification-title-low,
 .notification-title-normal,
 .notification-title-critical {
-  color: #efefef;
+  color: $macch-Text;
   font-size: 1.2em;
   margin: 5px;
 }

@@ -1,4 +1,5 @@
 @import "Colors.scss";
+@import "SideDashCalendar";
 
 .side_dash {
   @include MasterWidget;
@@ -25,18 +26,6 @@
 
 .side_dash_title_start button {
   margin: 0 4px;
-}
-
-.side_dash_calendar {
-  background-color: $side_dash_bg_dark;
-  border: 1px solid $side_dash_border_color;
-  border-radius: $master_border_radius;
-  padding: 5px;
-
-  &:selected {
-    padding: unset;
-    background-color: $macch-Surface2;
-  }
 }
 
 .side_dash_mid_box {

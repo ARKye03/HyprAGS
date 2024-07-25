@@ -1,0 +1,20 @@
+.side_dash_calendar {
+  background-color: $side_dash_bg_dark;
+  border: 1px solid $side_dash_border_color;
+  border-radius: $master_border_radius;
+  padding: 5px;
+
+  &:selected {
+    background-color: transparent;
+    box-shadow: inset 0 -0.3em 0 0 $macch-Text;
+    color: $macch-Text;
+    border-radius: 5px;
+  }
+  &.highlight {
+    color: $macch-Blue;
+    box-shadow: inset 0 -2px 0 0 $macch-Blue;
+  }
+  &:indeterminate {
+    color: $macch-Overlay0;
+  }
+}

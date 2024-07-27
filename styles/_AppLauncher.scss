@@ -1,4 +1,10 @@
 @import "Colors.scss";
-.applauncher {
+
+window#applauncher {
+  all: unset;
+}
+.applauncher_box {
   @include MasterWidget;
+  margin: 5px 0 0 5px;
+  padding: 2em;
 }

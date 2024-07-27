@@ -71,7 +71,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
   return Widget.Box({
     vertical: true,
-    css: `margin: ${spacing * 2}px;`,
+    class_name: "applauncher_box",
     children: [
       entry,
 
@@ -99,7 +99,6 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 export default Widget.Window({
   name: WINDOW_NAME,
   anchor: ["top", "left"],
-  class_name: "applauncher",
   setup: (self) =>
     self.keybind("Escape", () => {
       App.closeWindow(WINDOW_NAME);

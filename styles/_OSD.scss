@@ -1,12 +1,14 @@
 @import "Colors";
 
 window#volume_osd {
-  @include MasterWidget;
+  all: unset;
 }
 
 .volume_osd_box {
   @include MasterWidget;
+  color: $macch-Text;
   min-width: 180px;
+  margin-bottom: 1em;
   padding: 5px 10px;
 
   & scale trough {

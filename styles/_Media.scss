@@ -1,9 +1,11 @@
 @import "Colors.scss";
 
 window#mpris {
-  @include MasterWidget;
+  all: unset;
 }
 .player {
+  @include MasterWidget;
+  margin-top: 5px;
   min-width: 350px;
 
   & .img {

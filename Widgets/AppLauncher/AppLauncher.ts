@@ -1,3 +1,5 @@
+import { Globals } from "Widgets/userVars";
+
 const { query } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
 
@@ -110,7 +112,7 @@ export default Widget.Window({
     child: Widget.Revealer({
       revealChild: false,
       transition: "slide_down",
-      transition_duration: 200,
+      transition_duration: Globals.MASTER_TRANSITION_DURATION,
       setup: (self) => {
         self.hook(
           App,

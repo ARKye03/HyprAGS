@@ -1,4 +1,5 @@
 import { Label } from "resource:///com/github/Aylur/ags/widgets/label.js";
+import { Globals } from "Widgets/userVars";
 const mpris = await Service.import("mpris");
 const players = mpris.bind("players");
 
@@ -153,7 +154,7 @@ export default Widget.Window({
     css: "padding: 1px;",
     child: Widget.Revealer({
       revealChild: false,
-      transitionDuration: 150,
+      transitionDuration: Globals.MASTER_TRANSITION_DURATION,
       transition: "slide_down",
       setup: (self) => {
         self.hook(

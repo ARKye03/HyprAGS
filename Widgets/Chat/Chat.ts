@@ -2,6 +2,7 @@
 import Gtk from "gi://Gtk";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
+import { Globals } from "Widgets/userVars";
 
 const TextEntryWidget = Widget.subclass(Gtk.TextView);
 const TextInputWidget = TextEntryWidget({
@@ -95,7 +96,7 @@ export default () =>
       css: "padding: 1px;",
       child: Widget.Revealer({
         revealChild: false,
-        transitionDuration: 150,
+        transitionDuration: Globals.MASTER_TRANSITION_DURATION,
         transition: "slide_right",
         setup: (self) => {
           self.hook(

@@ -213,7 +213,7 @@ export default () =>
       class_name: "side_dash_master_box",
       child: Widget.Revealer({
         revealChild: false,
-        transitionDuration: 150,
+        transitionDuration: Globals.MASTER_TRANSITION_DURATION,
         transition: "slide_left",
         setup: (self) => {
           self.hook(

@@ -1,11 +1,13 @@
 @import "Colors.scss";
 @import "SideDashCalendar";
 
-.side_dash {
-  @include MasterWidget;
+window#SideDash {
+  all: unset;
 }
 
 .side_dash_box {
+  @include MasterWidget;
+  margin: 5px 0px;
   background-color: $master-dark-bg;
   border-bottom-left-radius: $master_border_radius;
   border-top-left-radius: $master_border_radius;
@@ -35,12 +37,12 @@
 }
 
 .side_dash_notifications_scroll {
-  min-height: 630px;
+  min-height: 615px;
   background-color: $side_dash_bg_dark;
   transition: 300ms;
 
   &.active {
-    min-height: 575px;
+    min-height: 560px;
     transition: 100ms;
   }
 }

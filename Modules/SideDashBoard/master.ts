@@ -1,4 +1,5 @@
 import { Globals } from "Modules/userVars";
+import PopupWindow from "Widgets/PopupWindow";
 import { icons } from "assets/Assets";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
@@ -202,37 +203,25 @@ const NotificationsBox = Widget.Box({
 const Calendar = Widget.Calendar({
   class_name: "side_dash_calendar",
 });
+
+const SideDashBox = Widget.Box(
+  {
+    class_name: "side_dash_box",
+    expand: true,
+    vertical: true,
+    spacing: 5,
+  },
+  UpperBox,
+  MidBox,
+  Calendar,
+  NotificationsBox
+);
+
 export default () =>
-  Widget.Window({
-    anchor: ["top", "right", "bottom"],
+  PopupWindow({
     name: "SideDash",
+    anchor: ["top", "right", "bottom"],
     class_name: "side_dash",
-    visible: false,
-    child: Widget.Box({
-      css: "padding: 1px",
-      class_name: "side_dash_master_box",
-      child: Widget.Revealer({
-        revealChild: false,
-        transitionDuration: Globals.MASTER_TRANSITION_DURATION,
-        transition: "slide_left",
-        setup: (self) => {
-          self.hook(
-            App,
-            (self, windowName, visible) => {
-              if (windowName === "SideDash") {
-                self.reveal_child = visible;
-              }
-            },
-            "window-toggled"
-          );
-        },
-        child: Widget.Box({
-          class_name: "side_dash_box",
-          expand: true,
-          vertical: true,
-          spacing: 5,
-          children: [UpperBox, MidBox, Calendar, NotificationsBox],
-        }),
-      }),
-    }),
+    transition_type: "slide_left",
+    child: SideDashBox,
   });

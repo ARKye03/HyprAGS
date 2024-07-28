@@ -1,4 +1,4 @@
-import { Globals } from "Widgets/userVars";
+import { Globals } from "Modules/userVars";
 
 const { query } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";

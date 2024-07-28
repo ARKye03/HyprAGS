@@ -1,4 +1,4 @@
-import { Globals } from "Widgets/userVars";
+import { Globals } from "Modules/userVars";
 
 let Workspaces;
 if (Globals.DESKTOP_SESSION === "hyprland") {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1>Hello World</h1>
+      <p>This is a simple web page.</p>
+    </section>
+    <style>
+      section {
+        width: 100px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <script>
+      function convertMarkdownToHtml(markdown) {
+        let html = marked(markdown);
+        document.body.innerHTML = html; // Set the HTML content of the body
+      }
+    </script>
+  </body>
+</html>

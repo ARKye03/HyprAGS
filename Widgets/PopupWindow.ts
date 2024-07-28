@@ -20,8 +20,6 @@ export default ({ name, transition_type, child, ...rest }) =>
     child: Widget.Box({
       children: [PopupRevealer(name, transition_type, child)],
     }),
-    popup: true,
-    focusable: true,
     visible: false,
     ...rest,
   });

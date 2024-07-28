@@ -3,6 +3,7 @@ import Gtk from "gi://Gtk";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
 import { Globals } from "Modules/userVars";
+import PopupWindow from "Widgets/PopupWindow";
 
 const TextEntryWidget = Widget.subclass(Gtk.TextView);
 const TextInputWidget = TextEntryWidget({
@@ -85,39 +86,23 @@ const chatView = Widget.Box({
   ],
 });
 export default () =>
-  Widget.Window({
+  PopupWindow({
     name: "Chat",
     anchor: ["top", "left", "bottom"],
+    transition_type: "slide_right",
     exclusivity: "normal",
     keymode: "on-demand",
-    visible: false,
     class_name: "chat",
-    child: Widget.Box({
-      css: "padding: 1px;",
-      child: Widget.Revealer({
-        revealChild: false,
-        transitionDuration: Globals.MASTER_TRANSITION_DURATION,
-        transition: "slide_right",
-        setup: (self) => {
-          self.hook(
-            App,
-            (self, windowName, visible) => {
-              if (windowName === "Chat") {
-                self.reveal_child = visible;
-                TextInputWidget.grab_focus();
-              }
-            },
-            "window-toggled"
-          );
-        },
-        child: Widget.Box({
-          class_name: "chatBox",
-          expand: true,
-          vertical: true,
-          children: [chatHeader, chatView, InputSection],
-        }),
-      }),
-    }),
+    child: Widget.Box(
+      {
+        class_name: "chatBox",
+        expand: true,
+        vertical: true,
+      },
+      chatHeader,
+      chatView,
+      InputSection
+    ),
   });
 function CreateResultWebView() {
   let startIter = TextInputWidget.get_buffer().get_start_iter();

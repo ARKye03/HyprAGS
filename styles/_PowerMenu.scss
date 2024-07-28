@@ -1,0 +1,27 @@
+@import "Colors";
+
+window#powermenu {
+  all: unset;
+}
+.powerBox_master {
+  @include MasterWidget;
+  padding: 10px;
+  min-width: 50em;
+  min-height: 25em;
+}
+.powerBox_left_box {
+  padding: 10px;
+  background-image: url("/home/archkye/backgrounds/wallpapers/01_Wallpaper.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: $border-radius;
+}
+.powerBox_left_box_upper_label {
+  padding: 0.2em 0px;
+  background-color: $macch-Base;
+  border-radius: 5px;
+}
+.powerBox_right_box button {
+  padding: 1em;
+}

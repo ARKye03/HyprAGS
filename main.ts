@@ -6,6 +6,7 @@ import notificationPopup from "./Modules/Notifications/NotificationPops";
 import SideDash from "Modules/SideDashBoard/master";
 import MediaWidget from "Modules/Media/Mpris";
 import VolumeOSD from "Modules/Media/osd";
+import PowerMenu from "Modules/PowerMenu/PowerMenu";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -45,6 +46,7 @@ App.config({
     applauncher,
     SideDash(),
     VolumeOSD(),
+    PowerMenu,
     // await ClipboardManager(),
   ],
 });

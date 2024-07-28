@@ -7,6 +7,7 @@ window#mpris {
   @include MasterWidget;
   margin-top: 5px;
   min-width: 350px;
+  padding: 15px;
 
   & .img {
     min-width: 100px;

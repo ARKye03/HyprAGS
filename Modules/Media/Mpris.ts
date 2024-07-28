@@ -1,5 +1,5 @@
 import { Label } from "resource:///com/github/Aylur/ags/widgets/label.js";
-import { Globals } from "Modules/userVars";
+import PopupWindow from "Widgets/PopupWindow";
 const mpris = await Service.import("mpris");
 const players = mpris.bind("players");
 
@@ -124,7 +124,7 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   });
 
   return Widget.Box(
-    { class_name: "player", css: "padding: 15px" },
+    { class_name: "player" },
     img,
     Widget.Box(
       {
@@ -145,36 +145,16 @@ function Player(player: import("types/service/mpris").MprisPlayer) {
   );
 }
 
-export default Widget.Window({
+const MprisBox = Widget.Box({
+  vertical: true,
+  visible: players.as((p) => p.some((player) => player.name === "mpd")),
+  children: players.as((p) =>
+    p.filter((player) => player.name === "mpd").map(Player)
+  ),
+});
+export default PopupWindow({
   name: "mpris",
-  css: "border-radius: 10px;",
-  visible: false,
   anchor: ["top"],
-  child: Widget.Box({
-    css: "padding: 1px;",
-    child: Widget.Revealer({
-      revealChild: false,
-      transitionDuration: Globals.MASTER_TRANSITION_DURATION,
-      transition: "slide_down",
-      setup: (self) => {
-        self.hook(
-          App,
-          (self, windowName, visible) => {
-            if (windowName === "mpris") {
-              self.reveal_child = visible;
-            }
-          },
-          "window-toggled"
-        );
-      },
-      child: Widget.Box({
-        vertical: true,
-        css: "min-height: 2px; min-width: 2px;",
-        visible: players.as((p) => p.some((player) => player.name === "mpd")),
-        children: players.as((p) =>
-          p.filter((player) => player.name === "mpd").map(Player)
-        ),
-      }),
-    }),
-  }),
+  transition_type: "slide_down",
+  child: MprisBox,
 });

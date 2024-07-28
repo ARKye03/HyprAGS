@@ -1,4 +1,4 @@
-import { Globals } from "Modules/userVars";
+import PopupWindow from "Widgets/PopupWindow";
 
 const { query } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
@@ -98,37 +98,18 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   });
 };
 
-export default Widget.Window({
+export default PopupWindow({
   name: WINDOW_NAME,
   anchor: ["top", "left"],
-  setup: (self) =>
+  transition_type: "slide_down",
+  setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>
     self.keybind("Escape", () => {
       App.closeWindow(WINDOW_NAME);
     }),
-  visible: false,
   keymode: "exclusive",
-  child: Widget.Box({
-    css: "padding: 1px",
-    child: Widget.Revealer({
-      revealChild: false,
-      transition: "slide_down",
-      transition_duration: Globals.MASTER_TRANSITION_DURATION,
-      setup: (self) => {
-        self.hook(
-          App,
-          (self, windowName, visible) => {
-            if (windowName === "applauncher") {
-              self.reveal_child = visible;
-            }
-          },
-          "window-toggled"
-        );
-      },
-      child: Applauncher({
-        width: 400,
-        height: 500,
-        spacing: 12,
-      }),
-    }),
+  child: Applauncher({
+    width: 400,
+    height: 500,
+    spacing: 12,
   }),
 });

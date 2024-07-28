@@ -1,4 +1,5 @@
 import GLib from "types/@girs/glib-2.0/glib-2.0";
+import PopupWindow from "Widgets/PopupWindow";
 const audio = await Service.import("audio");
 
 const TIMEOUT_DESPAWN = 1000;
@@ -58,15 +59,12 @@ export default function VolumeOSD() {
     });
   }
 
-  const window = Widget.Window(
-    {
-      name: WINDOW_NAME,
-      anchor: ["bottom"],
-      css: "padding: 1px;",
-      visible: false,
-    },
-    Volume()
-  );
+  const window = PopupWindow({
+    name: WINDOW_NAME,
+    anchor: ["bottom"],
+    transition_type: "slide_up",
+    child: Volume(),
+  });
 
   return window;
 }

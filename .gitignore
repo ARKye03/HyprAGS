@@ -146,9 +146,10 @@ dist
 # AGS
 types
 types@
-Widgets/Chat/WebView.html
 .vscode/settings.json
 .VSCodeCounter/
+
+#Gi
 @types/astalhyprland-0.1/astalhyprland-0.1-ambient.d.ts
 @types/astalhyprland-0.1/astalhyprland-0.1-ambient.js
 @types/astalhyprland-0.1/astalhyprland-0.1-import.d.ts

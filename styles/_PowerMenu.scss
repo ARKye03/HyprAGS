@@ -17,10 +17,11 @@ window#powermenu {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: $border-radius;
+  color: $macch-Text;
 }
 
 .powerBox_left_box_upper_label {
-  padding: 0.2em 0px;
+  padding: 0.5em 0px;
   background-color: $macch-Base;
   border-radius: 5px;
 }

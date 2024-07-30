@@ -1,11 +1,11 @@
-import { icons } from "assets/Assets";
+import { icons, sounds } from "assets/Assets";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils/exec.js";
 import { Globals } from "Modules/userVars";
 
 const notifications = await Service.import("notifications");
 notifications.popupTimeout = 5000;
 notifications.connect("notified", () =>
-  execAsync(`paplay ${Globals.HOME}/.dotfiles/public/notification-long-pop.wav`)
+  execAsync(`paplay ${sounds.notificationLongPop}`)
 );
 
 const popups = notifications.bind("popups");

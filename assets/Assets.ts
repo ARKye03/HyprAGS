@@ -1,6 +1,8 @@
 const getSvgPath = (filePath: string) => `${App.configDir}/assets/${filePath}`;
 const getImagePath = (filePath: string) =>
   `${App.configDir}/assets/Wallpapers/${filePath}`;
+const getSoundPath = (filePath: string) =>
+  `${App.configDir}/assets/Sounds/${filePath}`;
 
 export const icons = {
   PowerButton: getSvgPath("SideDashboard/powerButton.svg"),
@@ -38,4 +40,8 @@ export const wallpapers = {
   archBlack: getImagePath("archBlack.png"),
   bkGradient1: getImagePath("bkg3_bkg5.png"),
   catBlueEyes: getImagePath("catBE.png"),
+};
+
+export const sounds = {
+  notificationLongPop: getSoundPath("notification-long-pop.opus"),
 };

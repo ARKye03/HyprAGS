@@ -1,6 +1,7 @@
 import { icons, wallpapers } from "assets/Assets";
 import { Globals } from "Modules/userVars";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils/exec.js";
+import PopupWindow from "Widgets/PopupWindow";
 
 const WINDOW_NAME = "powermenu";
 
@@ -70,9 +71,9 @@ const powerBox = () =>
     )
   );
 
-export default Widget.Window({
+export default PopupWindow({
   name: WINDOW_NAME,
-  visible: false,
+  transition_type: "crossfade",
   keymode: "exclusive",
   setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>
     self.keybind("Escape", () => {

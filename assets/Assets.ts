@@ -1,4 +1,6 @@
 const getSvgPath = (filePath: string) => `${App.configDir}/assets/${filePath}`;
+const getImagePath = (filePath: string) =>
+  `${App.configDir}/assets/Wallpapers/${filePath}`;
 
 export const icons = {
   PowerButton: getSvgPath("SideDashboard/powerButton.svg"),
@@ -30,4 +32,10 @@ export const icons = {
   notificationSvg: getSvgPath("notification.svg"),
   closeChatSvg: getSvgPath("closeChat.svg"),
   pacmanSvg: getSvgPath("pacman.svg"),
+};
+
+export const wallpapers = {
+  archBlack: getImagePath("archBlack.png"),
+  bkGradient1: getImagePath("bkg3_bkg5.png"),
+  catBlueEyes: getImagePath("catBE.png"),
 };

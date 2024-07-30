@@ -65,7 +65,9 @@ const powerBox = () =>
           homogeneous: true,
         },
         powerButton(icons.SysReboot, () => execAsync("systemctl reboot")),
-        powerButton(icons.SysSuspend, () => execAsync("systemctl suspend")),
+        powerButton(icons.SysSuspend, () =>
+          execAsync("notify-send 'This breaks the session'")
+        ),
         powerButton(icons.moodSad, () => execAsync("notify-send 'Hello mate'"))
       )
     )

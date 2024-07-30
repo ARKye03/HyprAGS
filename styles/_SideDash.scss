@@ -20,7 +20,6 @@ window#SideDash {
 }
 
 .side_dash_title {
-  background-color: $side_dash_bg_dark;
   border: 1px solid $side_dash_border_color;
   border-radius: $master_border_radius;
   padding: $master_padding;
@@ -38,7 +37,6 @@ window#SideDash {
 
 .side_dash_notifications_scroll {
   min-height: 615px;
-  background-color: $side_dash_bg_dark;
   transition: 300ms;
 
   &.active {
@@ -48,7 +46,6 @@ window#SideDash {
 }
 
 .side_dash_notifications {
-  background-color: $side_dash_bg_dark;
   border: 1px solid $side_dash_border_color;
   border-radius: $master_border_radius;
   padding: 5px;

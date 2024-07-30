@@ -76,7 +76,7 @@ const powerBox = () =>
 export default PopupWindow({
   name: WINDOW_NAME,
   transition_type: "crossfade",
-  keymode: "on-demand",
+  keymode: "exclusive",
   setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>
     self.keybind("Escape", () => {
       App.closeWindow(WINDOW_NAME);

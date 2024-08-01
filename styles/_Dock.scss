@@ -1,0 +1,14 @@
+@import "Colors";
+
+window#Dock {
+  all: unset;
+}
+.dock_box {
+  min-width: 300px;
+}
+.dock_box_apps {
+  @include MasterWidget;
+  min-height: 60px;
+  padding: 0.5em 1em;
+  margin-bottom: 6px;
+}

@@ -7,6 +7,7 @@ import SideDash from "Modules/SideDashBoard/master";
 import MediaWidget from "Modules/Media/Mpris";
 import VolumeOSD from "Modules/Media/osd";
 import PowerMenu from "Modules/PowerMenu/PowerMenu";
+import { Dock } from "Modules/Dock/dock";
 
 // main scss file
 const scss = `${App.configDir}/styles/MainStyle.scss`;
@@ -47,6 +48,7 @@ App.config({
     SideDash(),
     VolumeOSD(),
     PowerMenu,
+    Dock(),
     // await ClipboardManager(),
   ],
 });

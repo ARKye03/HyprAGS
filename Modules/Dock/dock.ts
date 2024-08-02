@@ -1,6 +1,11 @@
 import { icons } from "assets/Assets";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils/exec.js";
-
+import Gio from "gi://Gio";
+import { Globals } from "Modules/userVars";
+const a = Gio.DesktopAppInfo.new_from_filename(
+  `${Globals.HOME}/.local/share/applications/brave-browser.desktop`
+);
+console.log(a);
+console.log(a.list_actions());
 const rev = Widget.Revealer(
   {
     reveal_child: false,
@@ -13,6 +18,7 @@ const rev = Widget.Revealer(
       image: Widget.Icon({ icon: icons.AppLauncher, size: 45 }),
       vpack: "center",
       hpack: "center",
+      on_clicked: () => a.launch_action("new-window", null),
     }),
     Widget.Button({
       image: Widget.Icon({ icon: icons.ArchLogo, size: 45 }),

@@ -30,6 +30,7 @@ window#powermenu {
   padding: 1em;
   color: $macch-Lavender;
   &:focus {
-    background-color: $macch-Blue;
+    background-color: $accent-color;
+    border-color: $accent-color;
   }
 }

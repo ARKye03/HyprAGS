@@ -15,7 +15,7 @@ window#volume_osd {
     min-height: 8px;
   }
   & scale highlight {
-    background-color: $macch-Blue;
+    background-color: $accent-color;
   }
   & scale slider {
     all: unset;

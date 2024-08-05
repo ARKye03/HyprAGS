@@ -8,8 +8,6 @@
 @import "Clipboard";
 @import "PowerMenu";
 
-$workspace-button: $accent-color;
-
 label {
   font-weight: 700;
 }
@@ -84,6 +82,6 @@ label {
   color: $macch-Blue;
 }
 .wsb-active {
-  color: $workspace-button;
-  border-bottom: 3px solid $workspace-button;
+  color: $accent-color;
+  border-bottom: 3px solid $accent-color;
 }

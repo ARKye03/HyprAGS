@@ -49,8 +49,8 @@ label {
 }
 
 .workspaces button.focused {
-  color: $workspace-button;
-  border-bottom: 3px solid $workspace-button;
+  color: $accent-color;
+  border-bottom: 3px solid $accent-color;
 }
 .workspaces button,
 .workspaces button.work,

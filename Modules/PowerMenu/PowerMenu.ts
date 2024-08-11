@@ -75,6 +75,7 @@ const powerBox = () =>
 
 export default PopupWindow({
   name: WINDOW_NAME,
+  layer: "overlay",
   transition_type: "crossfade",
   keymode: "exclusive",
   setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>

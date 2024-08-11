@@ -62,6 +62,7 @@ export default function VolumeOSD() {
   const window = PopupWindow({
     name: WINDOW_NAME,
     anchor: ["bottom"],
+    layer: "overlay",
     transition_type: "slide_up",
     child: Volume(),
   });

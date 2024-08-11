@@ -110,6 +110,7 @@ const Notification = (n: {
 export default Widget.Window(
   {
     name: "notifications",
+    layer: "overlay",
     anchor: ["top", "right", "bottom"],
   },
   Widget.Box({

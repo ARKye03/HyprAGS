@@ -1,9 +1,19 @@
 @import "Colors";
 .battery_box {
   @include MasterWidget;
-  padding: 0 5px;
   margin: 5px 8px;
+  padding: 0 5px;
+  font-size: 0.5em;
+  & label {
+    font-size: 1.5em;
+  }
+}
+.idle {
+  color: $macch-Text;
+}
+.low_charge {
+  color: $macch-Red;
 }
 .charging {
-  color: $macch-Peach;
+  color: $macch-Green;
 }

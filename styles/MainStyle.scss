@@ -56,7 +56,9 @@ label {
 .workspaces button,
 .workspaces button.work,
 .workspaces button.focused {
-  padding-right: 5px;
+  & label {
+    padding: 0px 2px 0px 6px;
+  }
 }
 .media:hover {
   background-color: #343852;

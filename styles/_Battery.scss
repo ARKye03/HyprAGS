@@ -1,0 +1,9 @@
+@import "Colors";
+.battery_box {
+  @include MasterWidget;
+  padding: 0 5px;
+  margin: 5px 8px;
+}
+.charging {
+  color: $macch-Peach;
+}

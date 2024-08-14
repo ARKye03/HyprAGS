@@ -7,6 +7,20 @@ import { SysTray } from "./SysTray";
 import { Clock } from "./Clock";
 import { NetworkIndicator } from "./Network";
 
+const battery = await Service.import("battery");
+
+const batteryProgress = Widget.Box(
+  { class_name: "battery_box" },
+  Widget.CircularProgress({
+    child: Widget.Icon({
+      icon: battery.bind("icon_name"),
+    }),
+    visible: battery.bind("available"),
+    value: battery.bind("percent").as((p) => (p > 0 ? p / 100 : 0)),
+    class_name: battery.bind("charging").as((ch) => (ch ? "charging" : "idle")),
+  })
+);
+
 const Left = () =>
   Widget.Box({
     children: [AppLauncher, Workspaces()],
@@ -18,7 +32,14 @@ const Center = () =>
 const Right = () =>
   Widget.Box({
     hpack: "end",
-    children: [Volume(), NetworkIndicator(), Clock(), SysTray(), PowerMenu],
+    children: [
+      Volume(),
+      NetworkIndicator(),
+      Clock(),
+      SysTray(),
+      batteryProgress,
+      PowerMenu,
+    ],
   });
 export default (monitor = 0) =>
   Widget.Window({

@@ -7,6 +7,7 @@
 @import "SideDash";
 @import "Clipboard";
 @import "PowerMenu";
+@import "Battery";
 
 label {
   font-weight: 700;
@@ -27,7 +28,7 @@ label {
   @include MasterWidget;
   padding: 0 5px;
   margin: 5px 8px;
-  color: $macch-Text;
+  // color: $macch-Text;
 }
 .top_sys_button_menu {
   padding: 0px 10px;

@@ -28,9 +28,4 @@ window#powermenu {
 
 .powerBox_right_box button {
   padding: 1em;
-  color: $macch-Lavender;
-  &:focus {
-    background-color: $accent-color;
-    border-color: $accent-color;
-  }
 }

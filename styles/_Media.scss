@@ -33,10 +33,12 @@ window#mpris {
 
     & trough {
       min-height: 8px;
+      border-radius: $master_border_radius;
     }
 
     & highlight {
       background-color: $accent-color;
+      border-radius: $master_border_radius;
     }
 
     & slider {

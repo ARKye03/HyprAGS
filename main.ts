@@ -5,7 +5,7 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import notificationPopup from "./Modules/Notifications/NotificationPops";
 import SideDash from "Modules/SideDashBoard/master";
 import MediaWidget from "Modules/Media/Mpris";
-import OSD from "Modules/Media/osd";
+import OSD from "Modules/OSD/master";
 import PowerMenu from "Modules/PowerMenu/PowerMenu";
 
 // main scss file

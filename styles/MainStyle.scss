@@ -8,83 +8,22 @@
 @import "Clipboard";
 @import "PowerMenu";
 @import "Battery";
+@import "Bar";
 
-label {
-  font-weight: 700;
-}
-.bar {
-  @include MasterWidget;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-}
-.wifi_indicator,
-.workspaces,
-.clock,
-.volume,
-.systray,
-.media,
-.top_sys_button_menu,
-.ws-container {
-  @include MasterWidget;
-  padding: 0 5px;
-  margin: 5px 8px;
-  // color: $macch-Text;
-}
-.top_sys_button_menu {
-  padding: 0px 10px;
-}
-.top_sys_button_menu:hover {
-  background-color: #3b4049;
-}
-.systray button,
-.workspaces button {
-  background-color: transparent;
-}
-.systray button:hover,
-.workspaces button:hover {
-  background-color: rgba($color: #545c70, $alpha: 0.4);
-}
-
-.workspaces button.work {
-  color: $macch-Blue;
-}
-
-.workspaces button.focused {
-  color: $accent-color;
-  border-bottom: 3px solid $accent-color;
-}
-.workspaces button,
-.workspaces button.work,
-.workspaces button.focused {
-  & label {
-    padding: 0px 2px 0px 6px;
+button {
+  all: unset;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 100ms;
+  &:hover {
+    background-color: $macch-Surface1;
+  }
+  &:focus {
+    background-color: $macch-Surface1;
   }
 }
-.media:hover {
-  background-color: #343852;
-}
-
-.clock {
-  font-size: 1.1em;
-}
-
-.ws-container {
-  @include MasterWidget;
-}
-.ws-button:hover {
-  transition: background-color ease-in-out 100ms;
-  background-color: $macch-Surface2;
-}
-.ws-button-label {
-  padding: 0px 8px 0px 12px;
-}
-.ws-button {
-  border-radius: 5px;
-}
-.wsb-occupied {
-  color: $macch-Blue;
-}
-.wsb-active {
-  color: $accent-color;
-  border-bottom: 3px solid $accent-color;
+label {
+  all: unset;
+  font-weight: 700;
+  color: $macch-Text;
 }

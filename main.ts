@@ -5,7 +5,7 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import notificationPopup from "./Modules/Notifications/NotificationPops";
 import SideDash from "Modules/SideDashBoard/master";
 import MediaWidget from "Modules/Media/Mpris";
-import VolumeOSD from "Modules/Media/osd";
+import OSD from "Modules/Media/osd";
 import PowerMenu from "Modules/PowerMenu/PowerMenu";
 
 // main scss file
@@ -45,7 +45,7 @@ App.config({
     MediaWidget,
     applauncher,
     SideDash(),
-    VolumeOSD(),
+    OSD(),
     PowerMenu,
     // await ClipboardManager(),
   ],

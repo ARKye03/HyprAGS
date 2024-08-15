@@ -3,7 +3,7 @@
 window#volume_osd {
   all: unset;
 }
-
+.brightness_osd_box,
 .volume_osd_box {
   @include MasterWidget;
   color: $macch-Text;
@@ -11,11 +11,16 @@ window#volume_osd {
   margin-bottom: 1em;
   padding: 5px 10px;
 
+  & label {
+    min-width: 3em;
+  }
+
   & scale trough {
     min-height: 8px;
+    border-radius: $master_border_radius;
   }
   & scale highlight {
-    background-color: $accent-color;
+    border-radius: $master_border_radius;
   }
   & scale slider {
     all: unset;

@@ -34,22 +34,21 @@ const AppItem = (app: {
       ],
     }),
   });
-
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   let applications = query("").map(AppItem);
-  const list = new Gtk.Grid({
+  const grid = new Gtk.Grid({
     column_spacing: spacing,
     row_spacing: spacing,
     column_homogeneous: true,
   });
 
   function repopulate() {
-    list.foreach((child: any) => list.remove(child));
+    grid.foreach((child: any) => grid.remove(child));
     let visibleApps = applications.filter((app) => app.visible);
     visibleApps.forEach((app, index) => {
       const row = Math.floor(index / 3);
       const col = index % 3;
-      list.attach(app, col, row, 1, 1);
+      grid.attach(app, col, row, 1, 1);
     });
   }
 
@@ -81,7 +80,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
       Widget.Scrollable({
         hscroll: "never",
         css: `min-width: ${width}px;` + `min-height: ${height}px;`,
-        child: list,
+        child: grid,
       }),
     ],
     setup: (self) =>

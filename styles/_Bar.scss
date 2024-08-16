@@ -1,9 +1,10 @@
 @import "Colors";
 
-.bar {
-  @include MasterWidget;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+window#bar-0 {
+  all: unset;
+  // @include MasterWidget;
+  // border-bottom-left-radius: 100px;
+  // border-bottom-right-radius: 100px;
 }
 .wifi_indicator,
 .workspaces,

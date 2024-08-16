@@ -6,6 +6,27 @@ const TIMEOUT_DESPAWN = 1000;
 const WINDOW_NAME = "volume_osd";
 
 const Volume = () => {
+  const icons = {
+    101: "overamplified",
+    67: "high",
+    34: "medium",
+    1: "low",
+    0: "muted",
+  };
+
+  const getIcon = () => {
+    const icon = audio.speaker.is_muted
+      ? 0
+      : [101, 67, 34, 1, 0].find(
+          (threshold) => threshold <= audio.speaker.volume * 100
+        );
+
+    return `audio-volume-${icons[icon ?? 0]}-symbolic`;
+  };
+
+  const icon = Widget.Icon({
+    icon: Utils.watch(getIcon(), audio.speaker, getIcon),
+  });
   const label = Widget.Label({
     label: audio.speaker.bind("volume").as((v) => `${Math.round(v * 100)}%`),
   });
@@ -24,8 +45,9 @@ const Volume = () => {
     {
       class_name: "volume_osd_box",
     },
-    label,
-    slider
+    icon,
+    slider,
+    label
   );
 };
 enum osd_types {

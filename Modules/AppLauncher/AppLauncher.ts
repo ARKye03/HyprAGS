@@ -100,16 +100,15 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
 export default PopupWindow({
   name: WINDOW_NAME,
-  anchor: ["top", "left"],
-  transition_type: "slide_down",
+  transition_type: "crossfade",
   setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>
     self.keybind("Escape", () => {
       App.closeWindow(WINDOW_NAME);
     }),
   keymode: "exclusive",
   child: Applauncher({
-    width: 400,
-    height: 500,
+    width: 600,
+    height: 300,
     spacing: 12,
   }),
 });

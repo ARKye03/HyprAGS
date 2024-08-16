@@ -13,7 +13,7 @@ button {
   all: unset;
   padding: 10px;
   border-radius: 5px;
-  transition: all 100ms;
+  transition: all ease-in-out 100ms;
   &:hover {
     background-color: $macch-Surface1;
   }

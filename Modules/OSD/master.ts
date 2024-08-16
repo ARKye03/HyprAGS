@@ -46,9 +46,7 @@ const Volume = () => {
     icon: Utils.watch(getIcon(), audio.speaker, getIcon),
   });
   const label = Widget.Label({
-    label: audio.speaker
-      .bind("volume")
-      .as((v) => `V => ${Math.round(v * 100)}%`),
+    label: audio.speaker.bind("volume").as((v) => `${Math.round(v * 100)}%`),
   });
 
   const slider = Widget.Slider({

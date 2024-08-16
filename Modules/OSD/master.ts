@@ -6,15 +6,34 @@ import brightness from "../../Services/Brigthness";
 const TIMEOUT_DESPAWN = 1000;
 const WINDOW_NAME = "volume_osd";
 
-const Brightness = () =>
-  Widget.Box(
+const Brightness = () => {
+  const icons = {
+    75: "high",
+    50: "medium",
+    25: "low",
+    0: "off",
+  };
+
+  const getIcon = () => {
+    const icon = [75, 50, 25, 0].find(
+      (threshold) => threshold <= brightness.screen_value * 100
+    );
+
+    return `display-brightness-${icons[icon ?? 0]}-symbolic`;
+  };
+
+  const icon = Widget.Icon({
+    icon: Utils.watch(getIcon(), brightness, getIcon),
+  });
+
+  return Widget.Box(
     { class_name: "brightness_osd_box" },
+    icon,
     Widget.Label({
       hpack: "center",
-
       label: brightness
         .bind("screen_value")
-        .as((v) => `B => ${Math.round(v * 100)}%`),
+        .as((v) => `${Math.round(v * 100)}%`),
     }),
     Widget.Slider({
       on_change: (self) => (brightness.screen_value = self.value),
@@ -23,6 +42,8 @@ const Brightness = () =>
       value: brightness.bind("screen_value"),
     })
   );
+};
+
 const Volume = () => {
   const icons = {
     101: "overamplified",
@@ -68,10 +89,12 @@ const Volume = () => {
     label
   );
 };
+
 enum osd_types {
   volume,
   brightness,
 }
+
 export default function OSD() {
   const Switch = Widget.Stack({
     children: {

@@ -8,9 +8,6 @@ window#SideDash {
 .side_dash_box {
   @include MasterWidget;
   margin: 5px 0px;
-  background-color: $master-dark-bg;
-  border-bottom-left-radius: $master_border_radius;
-  border-top-left-radius: $master_border_radius;
   min-width: 400px;
   padding: $master_padding;
 }
@@ -20,6 +17,7 @@ window#SideDash {
 }
 
 .side_dash_title {
+  background-color: $headerbar_shade_color;
   border: 1px solid $main-border-color;
   border-radius: $master_border_radius;
   padding: $master_padding;
@@ -35,6 +33,13 @@ window#SideDash {
   padding: $master_padding;
 }
 
+.side_dash_notifications {
+  background-color: $headerbar_shade_color;
+  border: 1px solid $main-border-color;
+  border-radius: $master_border_radius;
+  padding: 5px;
+}
+
 .side_dash_notifications_scroll {
   min-height: 600px;
   transition: 300ms;
@@ -43,10 +48,4 @@ window#SideDash {
     min-height: 540px;
     transition: 100ms;
   }
-}
-
-.side_dash_notifications {
-  border: 1px solid $main-border-color;
-  border-radius: $master_border_radius;
-  padding: 5px;
 }

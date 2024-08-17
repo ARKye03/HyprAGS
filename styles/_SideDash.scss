@@ -20,7 +20,7 @@ window#SideDash {
 }
 
 .side_dash_title {
-  border: 1px solid $side_dash_border_color;
+  border: 1px solid $main-border-color;
   border-radius: $master_border_radius;
   padding: $master_padding;
 }
@@ -46,7 +46,7 @@ window#SideDash {
 }
 
 .side_dash_notifications {
-  border: 1px solid $side_dash_border_color;
+  border: 1px solid $main-border-color;
   border-radius: $master_border_radius;
   padding: 5px;
 }

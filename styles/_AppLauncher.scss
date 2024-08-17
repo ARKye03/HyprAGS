@@ -8,3 +8,10 @@ window#applauncher {
   margin: 5px 0 0 5px;
   padding: 1.5em;
 }
+.applauncher_box entry {
+  background-color: $main-border-color;
+
+  &:focus {
+    border: 1px solid $accent-color;
+  }
+}

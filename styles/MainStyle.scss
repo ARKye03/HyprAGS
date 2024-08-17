@@ -11,11 +11,11 @@
 
 button {
   all: unset;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: $master_border_radius;
   transition: all ease-in-out 100ms;
   &:hover {
-    background-color: $macch-Surface1;
+    background-color: #{"@dark_2"};
   }
   &:focus {
     background-color: $macch-Surface1;

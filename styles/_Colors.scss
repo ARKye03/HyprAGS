@@ -1,3 +1,5 @@
+@import "gtk_assets/AdwGtk3";
+
 @mixin MasterWidget(
   $bg_c: $master-dark-bg,
   $bord: 1px solid $main-border-color,
@@ -7,40 +9,6 @@
   border: $bord;
   border-radius: $bord_rad;
 }
-
-$accent_color: #{"@blue_3"};
-$accent_bg_color: #{"@blue_4"};
-$accent_fg_color: #{"@light_1"};
-$destructive_color: #{"@orange_3"};
-$destructive_bg_color: #{"@orange_3"};
-$destructive_fg_color: #{"@dark_3"};
-$success_color: #{"@green_3"};
-$success_bg_color: #{"@green_3"};
-$success_fg_color: #{"@dark_3"};
-$warning_color: #{"@yellow_3"};
-$warning_bg_color: #{"@yellow_3"};
-$warning_fg_color: #{"@dark_3"};
-$error_color: #{"@red_3"};
-$error_bg_color: #{"@red_3"};
-$error_fg_color: #{"@red_3"};
-$window_bg_color: #{"@dark_3"};
-$window_fg_color: #{"@light_3"};
-$view_bg_color: #{"@dark_2"};
-$view_fg_color: #{"@light_3"};
-$headerbar_bg_color: #{"@dark_3"};
-$headerbar_fg_color: #{"@light_3"};
-$headerbar_border_color: #{"@light_2"};
-$headerbar_backdrop_color: #{"@window_bg_color"};
-$headerbar_shade_color: #{"@dark_4"};
-$card_bg_color: #{"@view_bg_color"};
-$card_fg_color: #{"@view_fg_color"};
-$card_shade_color: #{"@window_bg_color"};
-$dialog_bg_color: #{"@window_bg_color"};
-$dialog_fg_color: #{"@window_fg_color"};
-$popover_bg_color: #{"@window_bg_color"};
-$popover_fg_color: #{"@window_fg_color"};
-$shade_color: #{"@card_shade_color"};
-$scrollbar_outline_color: #{"@view_bg_color"};
 
 $macch-Rosewater:/*<->*/ #f4dbd6;
 $macch-Flamingo: /*<->*/ #f0c6c6;
@@ -69,26 +37,12 @@ $macch-Base:     /*<->*/ #24273a;
 $macch-Mantle:   /*<->*/ #1e2030;
 $macch-Crust:    /*<->*/ #181926;
 
-$one-dark-bg: #282c34;
-$one-dark-border-color: #3e4452;
-
 $latte-Mauve: #8839ef;
-
-$latte-Base: #eff1f5;
-
-$frappe-Base: #303446;
 $yet-another-color: #ff00ff;
 
-$borders: 10px;
-$master-dark-bg: #{"@window_bg_color"};
-$accent-color: #{"@accent_color"};
-// .base {
-//   background-color: #{"@window_bg_color"};
-//   border: 1.3px solid #{"@accent_bg_color"};
-//   border-radius: 12px;
-//   padding: 5px;
-// };
-$main-border-color: $macch-Surface0;
+$master-dark-bg: $window_bg_color;
+$accent-color: $accent_color;
+$main-border-color: $borders_color;
 
 $side_dash_bg_dark: transparentize(
   $color: $macch-Mantle,

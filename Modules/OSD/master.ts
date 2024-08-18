@@ -29,17 +29,17 @@ const Brightness = () => {
   return Widget.Box(
     { class_name: "brightness_osd_box" },
     icon,
-    Widget.Label({
-      hpack: "center",
-      label: brightness
-        .bind("screen_value")
-        .as((v) => `${Math.round(v * 100)}%`),
-    }),
     Widget.Slider({
       on_change: (self) => (brightness.screen_value = self.value),
       hexpand: true,
       draw_value: false,
       value: brightness.bind("screen_value"),
+    }),
+    Widget.Label({
+      hpack: "center",
+      label: brightness
+        .bind("screen_value")
+        .as((v) => `${Math.round(v * 100)}%`),
     })
   );
 };

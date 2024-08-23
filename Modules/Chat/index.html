@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Query Result Box</title>
+    <style>
+      .ai-result-box {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .ai-result-box pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 3px;
+        overflow-x: auto;
+      }
+      .ai-result-box code {
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="aiResultBox" class="ai-result-box"></div>
+
+    <script>
+      function displayAIResult(markdown) {
+        const resultBox = document.getElementById("aiResultBox");
+        resultBox.innerHTML = marked.parse(markdown);
+      }
+
+      // Example usage
+      const exampleMarkdown = `
+# AI Query Result
+
+This is an example of markdown text that can be displayed in the result box.
+
+## Features:
+
+- Supports **bold** and *italic* text
+- Allows for [links](https://example.com)
+- Displays code blocks:
+
+\`\`\`javascript
+function greet(name) {
+    console.log(\`Hello, \${name}!\`);
+}
+greet('AI');
+\`\`\`
+
+Pretty neat, right?
+        `;
+
+      displayAIResult(exampleMarkdown);
+    </script>
+  </body>
+</html>

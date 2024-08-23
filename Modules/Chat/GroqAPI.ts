@@ -1,4 +1,3 @@
-//Not used anymore, changed to html
 import GLib from "gi://GLib";
 
 export async function fetchGroq(input: string) {

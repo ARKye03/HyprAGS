@@ -1,8 +1,10 @@
 // @ts-ignore
 import Gtk from "gi://Gtk";
+imports.gi.versions.WebKit2 = "4.0";
+// @ts-ignore
+import WebKit from "gi://WebKit2";
 import { icons } from "assets/Assets";
 import { fetchGroq } from "./GroqAPI";
-import { Globals } from "Modules/userVars";
 import PopupWindow from "Widgets/PopupWindow";
 
 const TextEntryWidget = Widget.subclass(Gtk.TextView);
@@ -44,6 +46,10 @@ const chatHeader = Widget.CenterBox({
     }),
   }),
 });
+
+const webView = new WebKit.WebView();
+webView.load_uri(`${App.configPath}/Modules/Chat/index.html`);
+
 const InputSection = Widget.Box({
   class_name: "chatInput",
   hexpand: true,
@@ -67,24 +73,15 @@ const InputSection = Widget.Box({
     }),
   ],
 });
-let ListResults = Widget.ListBox({
-  hexpand: true,
-  vexpand: true,
-  class_name: "listChatBox",
-});
+
 const chatView = Widget.Box({
   class_name: "chatView",
   vexpand: true,
   vertical: true,
   hpack: "fill",
-  children: [
-    Widget.Scrollable({
-      vscroll: "automatic",
-      hscroll: "never",
-      child: ListResults,
-    }),
-  ],
+  children: [webView],
 });
+
 export default () =>
   PopupWindow({
     name: "Chat",
@@ -104,6 +101,7 @@ export default () =>
       InputSection
     ),
   });
+
 function CreateResultWebView() {
   let startIter = TextInputWidget.get_buffer().get_start_iter();
   let endIter = TextInputWidget.get_buffer().get_end_iter();
@@ -113,24 +111,19 @@ function CreateResultWebView() {
     true
   );
 
-  // print("Send: " + textToSend);
-  fetchGroq(textToSend).then((result) => {
-    // console.log(result);
-    let resultText = Array.isArray(result) ? result.join(" ") : result;
-    let row = Widget.Box({
-      class_name: "resultBox",
+  fetchGroq(textToSend)
+    .then((result) => {
+      let resultText = Array.isArray(result) ? result.join(" ") : result;
+      console.log("Result: ", resultText);
+      let script = `
+        const resultBox = document.createElement('div');
+        resultBox.className = 'resultBox';
+        resultBox.innerHTML = '<p>' + ${JSON.stringify(resultText)} + '</p>';
+        document.getElementById('results').prepend(resultBox);
+      `;
+      webView.run_javascript(script);
+    })
+    .catch((error) => {
+      console.error("Error fetching Groq API:", error);
     });
-    let label = Widget.Label({
-      label: resultText,
-      wrap: true,
-      use_markup: true,
-      selectable: true,
-    });
-    row.add(label);
-    // Add the Box to the top of the ListBox
-    ListResults.prepend(row);
-
-    // Show the Box
-    row.show_all();
-  });
 }

@@ -22,7 +22,12 @@ const powerBox = () =>
     Widget.Box(
       {
         class_name: "powerBox_left_box",
-        css: `background-image: url('${wallpapers.archBlack}');`,
+        css: `
+          background-image: url('${wallpapers.oneDarkArch}');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        `,
         homogeneous: true,
         hexpand: true,
         vertical: true,
@@ -34,6 +39,7 @@ const powerBox = () =>
         label: `Goodbye ${Globals.CurrentUser}!`,
       }),
       Widget.Label({
+        class_name: "powerBox_left_box_lower_label",
         label: "Dolor fugiat laboris mollit",
         vpack: "end",
       })

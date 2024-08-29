@@ -38,8 +38,7 @@ export const icons = {
 
 export const wallpapers = {
   archBlack: getImagePath("archBlack.png"),
-  bkGradient1: getImagePath("bkg3_bkg5.png"),
-  catBlueEyes: getImagePath("catBE.png"),
+  oneDarkArch: getImagePath("oneDarkArch.png"),
 };
 
 export const sounds = {

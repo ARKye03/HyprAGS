@@ -13,16 +13,14 @@ window#powermenu {
 
 .powerBox_left_box {
   padding: 10px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: $border-radius;
   color: $macch-Text;
 }
 
-.powerBox_left_box_upper_label {
+.powerBox_left_box_upper_label,
+.powerBox_left_box_lower_label {
   padding: 0.5em 0px;
-  background-color: $macch-Base;
+  background-color: $dark_4;
   border-radius: 5px;
 }
 

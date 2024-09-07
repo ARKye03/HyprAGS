@@ -41,11 +41,5 @@ window#SideDash {
 }
 
 .side_dash_notifications_scroll {
-  min-height: 610px;
-  transition: 300ms;
-
-  &.active {
-    min-height: 550px;
-    transition: 100ms;
-  }
+  min-height: 620px;
 }

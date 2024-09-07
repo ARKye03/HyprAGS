@@ -21,7 +21,7 @@ const UpperBox = Widget.CenterBox({
             .as((state) =>
               state.some((connection) => connection.state === "connected")
                 ? icons.ToggleVPN_on
-                : icons.ToggleVPN_off
+                : icons.ToggleVPN_off,
             ),
           size: 25,
           hpack: "start",
@@ -62,64 +62,8 @@ const UpperBox = Widget.CenterBox({
       hexpand: false,
     }),
     on_primary_click_release: () => {
-      Notifications.class_name = Notifications.class_name.includes("active")
-        ? "side_dash_notifications_scroll"
-        : "side_dash_notifications_scroll active";
-      MidBox.reveal_child = !MidBox.reveal_child;
+      App.ToggleWindow("powermenu");
     },
-  }),
-});
-let MidBox = Widget.Revealer({
-  revealChild: false,
-  transitionDuration: 300,
-  transition: "slide_down",
-  child: Widget.Box({
-    homogeneous: true,
-    class_name: "side_dash_mid_box",
-    spacing: 20,
-    children: [
-      Widget.Button({
-        on_primary_click_release: () => execAsync("hyprlock"),
-        child: Widget.Icon({
-          icon: icons.SysLock,
-          size: 25,
-          hpack: "center",
-        }),
-      }),
-      Widget.Button({
-        on_primary_click_release: () => execAsync("systemctl suspend"),
-        child: Widget.Icon({
-          icon: icons.SysSuspend,
-          size: 25,
-          hpack: "center",
-        }),
-      }),
-      Widget.Button({
-        on_primary_click_release: () =>
-          execAsync('notify-send "Work In Progress"'), //"systemctl suspend" breaks hyprland, so this is not an option
-        child: Widget.Icon({
-          icon: icons.SysLogout,
-          size: 25,
-          hpack: "center",
-        }),
-      }),
-      Widget.Button({
-        on_primary_click_release: () => execAsync("systemctl reboot"),
-        child: Widget.Icon({
-          icon: icons.SysReboot,
-          size: 25,
-          hpack: "center",
-        }),
-      }),
-      Widget.Button({
-        on_primary_click_release: () => execAsync("systemctl poweroff"),
-        child: Widget.Icon({
-          icon: icons.SysOff,
-          size: 25,
-          hpack: "center",
-        }),
-      }),
-    ],
   }),
 });
 
@@ -167,7 +111,7 @@ const Notifications = Widget.Scrollable({
     vertical: true,
     spacing: 10,
     children: Notification.bind("notifications").as((notifications) =>
-      notifications.map(createNotificationWidget)
+      notifications.map(createNotificationWidget),
     ),
   }),
 });
@@ -184,7 +128,7 @@ const NotificationsBox = Widget.Box({
         hpack: "center",
         hexpand: true,
         label: Notification.bind("notifications").as(
-          (n) => `There are ${n.length} notifications`
+          (n) => `There are ${n.length} notifications`,
         ),
       }),
       end_widget: Widget.Button({
@@ -212,9 +156,8 @@ const SideDashBox = Widget.Box(
     spacing: 5,
   },
   UpperBox,
-  MidBox,
   Calendar,
-  NotificationsBox
+  NotificationsBox,
 );
 
 export default () =>

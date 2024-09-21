@@ -1,4 +1,3 @@
-import Gtk from "gi://Gtk";
 import PopupWindow from "Widgets/PopupWindow";
 
 const { query } = await Service.import("applications");
@@ -34,28 +33,30 @@ const AppItem = (app: {
       ],
     }),
   });
+
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
+  // list of application buttons
   let applications = query("").map(AppItem);
-  const grid = new Gtk.Grid({
-    column_spacing: spacing,
-    row_spacing: spacing,
-    column_homogeneous: true,
+
+  // container holding the buttons
+  const list = Widget.Box({
+    vertical: true,
+    children: applications,
+    spacing,
   });
 
+  // repopulate the box, so the most frequent apps are on top of the list
   function repopulate() {
-    grid.foreach((child: any) => grid.remove(child));
-    let visibleApps = applications.filter((app) => app.visible);
-    visibleApps.forEach((app, index) => {
-      const row = Math.floor(index / 3);
-      const col = index % 3;
-      grid.attach(app, col, row, 1, 1);
-    });
+    applications = query("").map(AppItem);
+    list.children = applications;
   }
 
+  // search entry
   const entry = Widget.Entry({
     hexpand: true,
     css: `margin-bottom: ${spacing}px;`,
 
+    // to launch the first item on Enter
     on_accept: () => {
       if (applications[0]) {
         App.toggleWindow(WINDOW_NAME);
@@ -63,12 +64,11 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
       }
     },
 
-    on_change: ({ text }) => {
+    // filter out the list
+    on_change: ({ text }) =>
       applications.forEach((item) => {
         item.visible = item.attribute.app.match(text ?? "");
-      });
-      repopulate();
-    },
+      }),
   });
 
   return Widget.Box({
@@ -77,16 +77,18 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     children: [
       entry,
 
+      // wrap the list in a scrollable
       Widget.Scrollable({
         hscroll: "never",
         css: `min-width: ${width}px;` + `min-height: ${height}px;`,
-        child: grid,
+        child: list,
       }),
     ],
     setup: (self) =>
       self.hook(App, (_, windowName, visible) => {
         if (windowName !== WINDOW_NAME) return;
 
+        // when the applauncher shows up
         if (visible) {
           repopulate();
           entry.text = "";
@@ -98,6 +100,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
 export default PopupWindow({
   name: WINDOW_NAME,
+  // anchor: ["top", "left"],
   transition_type: "crossfade",
   setup: (self: { keybind: (arg0: string, arg1: () => void) => any }) =>
     self.keybind("Escape", () => {
@@ -106,7 +109,7 @@ export default PopupWindow({
   keymode: "exclusive",
   child: Applauncher({
     width: 600,
-    height: 300,
+    height: 400,
     spacing: 12,
   }),
 });

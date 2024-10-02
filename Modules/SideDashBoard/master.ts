@@ -3,6 +3,12 @@ import PopupWindow from "Widgets/PopupWindow";
 import { icons } from "assets/Assets";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
+const powerProfiles = await Service.import('powerprofiles')
+
+const label = Widget.Label({
+  label: powerProfiles.bind('active_profile'),
+})
+
 const network = await Service.import("network");
 const Notification = await Service.import("notifications");
 Notification.clearDelay = 25;
@@ -50,21 +56,63 @@ const UpperBox = Widget.CenterBox({
     hexpand: true,
     label: `Hello ${Globals.CurrentUser}!`,
   }),
-  end_widget: Widget.Button({
-    class_name: "side_dash_sys_button",
+  end_widget: Widget.Box({
+    class_name: "side_dash_sys_button_box",
     hpack: "end",
-    hexpand: false,
-    child: Widget.Icon({
-      icon: icons.PowerButton,
-      class_name: "sdsb",
-      size: 25,
+    spacing: 10
+  },
+    Widget.Button({
+      class_name: "side_dash_sys_button",
       hpack: "end",
       hexpand: false,
+      on_clicked: () => {
+        switch (powerProfiles.active_profile) {
+          case 'balanced':
+            powerProfiles.active_profile = 'performance';
+            break;
+          case 'performance':
+            powerProfiles.active_profile = 'power-saver';
+            break;
+          default:
+            powerProfiles.active_profile = 'balanced';
+            break;
+        }
+      },
+      child: Widget.Icon({
+        icon: powerProfiles.bind('active_profile').as((profile) => {
+          switch (profile) {
+            case 'balanced':
+              return icons.PPD_Balanced;
+            case 'performance':
+              return icons.PPD_Performance;
+            case 'power-saver':
+              return icons.PPD_PowerSaver;
+            default:
+              return icons.moodSad;
+          }
+        }),
+        class_name: "sdsb",
+        size: 25,
+        hpack: "end",
+        hexpand: false,
+      }),
     }),
-    on_primary_click_release: () => {
-      App.ToggleWindow("powermenu");
-    },
-  }),
+    Widget.Button({
+      class_name: "side_dash_sys_button",
+      hpack: "end",
+      hexpand: false,
+      child: Widget.Icon({
+        icon: icons.PowerButton,
+        class_name: "sdsb",
+        size: 25,
+        hpack: "end",
+        hexpand: false,
+      }),
+      on_primary_click_release: () => {
+        App.ToggleWindow("powermenu");
+      },
+    }),
+  ),
 });
 
 function createNotificationWidget(notification: {

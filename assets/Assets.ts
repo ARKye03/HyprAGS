@@ -34,6 +34,11 @@ export const icons = {
   notificationSvg: getSvgPath("notification.svg"),
   closeChatSvg: getSvgPath("closeChat.svg"),
   pacmanSvg: getSvgPath("pacman.svg"),
+
+  // PowerProfileDaemon
+  PPD_Balanced: getSvgPath("PowerProfiles/Balanced.svg"),
+  PPD_Performance: getSvgPath("PowerProfiles/Performance.svg"),
+  PPD_PowerSaver: getSvgPath("PowerProfiles/PowerSaver.svg"),
 };
 
 export const wallpapers = {

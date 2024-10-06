@@ -8,36 +8,25 @@ import MediaWidget from "Modules/Media/Mpris";
 import OSD from "Modules/OSD/master";
 import PowerMenu from "Modules/PowerMenu/PowerMenu";
 
-// main scss file
-const scss = `${App.configDir}/styles/MainStyle.scss`;
-
-// target css file
-const css = "/tmp/my-style.css";
+const SCSS_SOURCE = `${App.configDir}/styles/MainStyle.scss`;
+const CSS_OUTPUT = "/tmp/ags.css";
+const SCSS_COMPILER = "sass";
+const CMD = `${SCSS_COMPILER} ${SCSS_SOURCE} ${CSS_OUTPUT}`;
 
 Utils.monitorFile(
-  // directory that contains the scss files
   `${App.configDir}/styles/`,
 
-  // reload function
   () => {
-    // main scss file
-    const scss = `${App.configDir}/styles/MainStyle.scss`;
-
-    // target css file
-    const css = "/tmp/my-style.css";
-
-    // compile, reset, apply
-    Utils.exec(`sassc ${scss} ${css}`);
+    Utils.exec(CMD);
     App.resetCss();
-    App.applyCss(css);
+    App.applyCss(CSS_OUTPUT);
   }
 );
 
-// make sure sassc is installed on your system
-Utils.exec(`sassc ${scss} ${css}`);
+Utils.exec(CMD);
 
 App.config({
-  style: css,
+  style: CSS_OUTPUT,
   windows: [
     Bar(),
     notificationPopup,
@@ -47,6 +36,5 @@ App.config({
     SideDash(),
     OSD(),
     PowerMenu,
-    // await ClipboardManager(),
   ],
 });
